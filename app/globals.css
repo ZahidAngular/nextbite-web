@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   NEXTBITE DESIGN SYSTEM
+   Saray colors aur fonts yahan se control hotay hain.
+   Yahan value change karo — poori site par apply ho jayegi.
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- BRAND COLORS (logo se) ---- */
+  --primary: #f7941d; /* NextBite orange */
+  --primary-dark: #d97a06;
+  --secondary: #5ba829; /* NextBite green */
+  --secondary-dark: #3e7b1f;
+
+  /* ---- LIGHT THEME ---- */
+  --background: #fdfbf6;
+  --foreground: #161a12;
+  --muted: #5d6457;
+  --card: #ffffff;
+  --card-soft: #f4f1e8;
+  --line: rgba(22, 26, 18, 0.1);
+  --glass: rgba(255, 255, 255, 0.65);
+  --glow-primary: rgba(247, 148, 29, 0.25);
+  --glow-secondary: rgba(91, 168, 41, 0.25);
+  --shadow-3d: 0 30px 60px -20px rgba(22, 26, 18, 0.25);
 }
 
+.dark {
+  /* ---- DARK THEME ---- */
+  --background: #0b0e08;
+  --foreground: #f2f3ec;
+  --muted: #9ba294;
+  --card: #141a0f;
+  --card-soft: #1a2213;
+  --line: rgba(242, 243, 236, 0.12);
+  --glass: rgba(16, 21, 12, 0.55);
+  --glow-primary: rgba(247, 148, 29, 0.18);
+  --glow-secondary: rgba(91, 168, 41, 0.18);
+  --shadow-3d: 0 30px 60px -20px rgba(0, 0, 0, 0.65);
+}
+
+/* Tailwind ko variables se jorna — classes jaise bg-primary,
+   text-secondary, font-heading sab inhi variables se chalti hain */
 @theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-soft: var(--card-soft);
+  --color-line: var(--line);
+  /* font-hero    → Bricolage Grotesque 800 (award-winning display) */
+  --font-hero:    var(--font-hero);
+  /* font-heading → Plus Jakarta Sans 700 (clean multinational UI) */
+  --font-heading: var(--font-display);
+  /* font-body    → DM Sans 300-400 (premium body) */
+  --font-body:    var(--font-text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------- BASE ---------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* hide default cursor on mouse devices — CustomCursor replaces it */
+@media (pointer: fine) {
+  html { cursor: none; }
+  a, button { cursor: none; }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-text);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ── TYPOGRAPHY HIERARCHY ─────────────────────────────────────── */
+
+/* h1 → Bricolage Grotesque — ultra-tight award-site style */
+h1 {
+  font-family: var(--font-hero);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+/* h2, h3 → Plus Jakarta Sans — clean, modern, multinational */
+h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* h4, h5, h6 → Plus Jakarta Sans medium */
+h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Thin contrast line — used in hero for mixed-weight effect */
+.font-hero-thin {
+  font-family: var(--font-hero);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+/* Plus Jakarta Sans 800 ultra-tight — section numbers, large labels */
+.font-display-black {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--secondary));
+  border-radius: 99px;
+}
+
+/* ---------------- UTILITIES ---------------- */
+
+/* Orange → Green gradient text (brand signature) */
+.text-gradient {
+  background: linear-gradient(100deg, var(--primary) 20%, var(--secondary) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--line);
+}
+
+/* 3D helpers */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-2000 {
+  perspective: 2000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.shadow-3d {
+  box-shadow: var(--shadow-3d);
+}
+
+/* Outline (hollow) text — awwwards style backgrounds */
+.text-stroke {
+  -webkit-text-stroke: 1.5px var(--line);
+  color: transparent;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(3deg);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 9s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px var(--glow-primary);
+  }
+  50% {
+    box-shadow: 0 0 70px var(--glow-secondary);
+  }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Subtle film grain — premium texture */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
