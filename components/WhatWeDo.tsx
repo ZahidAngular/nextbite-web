@@ -199,7 +199,7 @@ export function WhatWeDo() {
     >
       <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
         {/* heading */}
-        <div className="relative z-10 shrink-0 pt-28 pb-4 text-center sm:pt-32">
+        <div className="relative z-10 shrink-0 pt-24 pb-4 text-center sm:pt-28">
           <p className="mb-3 inline-flex items-center gap-3 text-sm font-semibold tracking-[0.3em] text-secondary uppercase">
             <span className="h-[2px] w-10 bg-gradient-to-r from-primary to-secondary" />
             What We Do

@@ -23,7 +23,7 @@ export function About() {
   const imgRotateY = useTransform(scrollYProgress, [0, 0.4, 1], [-8, 0, 4]);
 
   return (
-    <section ref={ref} id="about" className="relative overflow-hidden py-28">
+    <section ref={ref} id="about" className="relative overflow-hidden py-24">
       {/* scrolling outline watermark — moves at different speed for parallax depth */}
       <motion.span
         aria-hidden
@@ -37,14 +37,14 @@ export function About() {
         {/* ── image with scroll-linked 3D rotation ── */}
         <Reveal3D direction="left">
           <motion.div style={{ rotateY: imgRotateY, z: imgZ, perspective: "1200px" }}>
-            <TiltCard className="shadow-3d overflow-hidden rounded-[2.5rem] isolate h-full">
+            <TiltCard className="shadow-3d overflow-hidden rounded-[1.25rem] isolate h-full">
               <div className="relative h-72 w-full sm:h-80 lg:h-full lg:min-h-[620px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1000&q=80"
+                  src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=85"
                   alt="Plant-based food platform"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center scale-110"
+                  className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-secondary-dark/20 via-transparent to-primary/10 hidden lg:block" />
               </div>

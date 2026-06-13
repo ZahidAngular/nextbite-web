@@ -39,7 +39,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-card-soft">
+    <footer className="relative overflow-hidden border-t border-line bg-card">
       {/* giant outline brand text */}
       <span
         aria-hidden

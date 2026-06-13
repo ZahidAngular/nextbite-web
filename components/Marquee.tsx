@@ -14,7 +14,7 @@ const items = [
 /** Infinite scrolling brand strip */
 export function Marquee() {
   return (
-    <div className="relative overflow-hidden border-y border-line bg-card-soft py-5">
+    <div className="relative overflow-hidden border-y border-line bg-card py-5">
       <div className="animate-marquee flex w-max items-center gap-10">
         {[...items, ...items, ...items, ...items].map((item, i) => (
           <span

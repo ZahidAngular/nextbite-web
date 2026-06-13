@@ -18,7 +18,7 @@ export function JoinUs() {
   const bannerOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
 
   return (
-    <section className="relative py-28">
+    <section className="relative py-24">
       <div ref={ref} className="mx-auto max-w-7xl px-6" style={{ perspective: "1300px" }}>
         <motion.div
           style={{

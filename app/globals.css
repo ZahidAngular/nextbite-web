@@ -9,37 +9,39 @@
    ============================================================ */
 
 :root {
-  /* ---- BRAND COLORS (logo se) ---- */
-  --primary: #e8860f;       /* orange — slightly deeper for light bg contrast */
-  --primary-dark: #c46f0a;
-  --secondary: #3d8c1e;     /* green — richer, more legible on white */
-  --secondary-dark: #2a6314;
+  /* ---- BRAND COLORS ---- */
+  --primary: #e07c0a;
+  --primary-dark: #b86508;
+  --secondary: #3a8a1a;
+  --secondary-dark: #286012;
 
-  /* ---- LIGHT THEME — clean, premium, professional ---- */
-  --background: #f8f7f3;    /* warm off-white, not harsh */
-  --foreground: #12180f;    /* deep forest-black, easy on eyes */
-  --muted: #4a5248;         /* darker warm slate — strong contrast on light bg */
-  --card: #ffffff;
-  --card-soft: #eeecea;     /* subtle warm card bg */
-  --line: rgba(18, 24, 15, 0.1);
-  --glass: rgba(255, 255, 255, 0.82);
-  --glow-primary: rgba(232, 134, 15, 0.18);
-  --glow-secondary: rgba(61, 140, 30, 0.18);
-  --shadow-3d: 0 24px 56px -16px rgba(18, 24, 15, 0.14);
+  /* ---- LIGHT THEME ---- */
+  --background: #f2f5ee;
+  --foreground: #0e1a0c;
+  --muted: #526250;
+  --card: #fafcf8;
+  --card-soft: #e8ede2;
+  --line: rgba(14, 26, 12, 0.09);
+  --glass: rgba(250, 252, 248, 0.85);
+  --glow-primary: rgba(224, 124, 10, 0.15);
+  --glow-secondary: rgba(58, 138, 26, 0.15);
+  --shadow-3d: 0 20px 50px -12px rgba(14, 26, 12, 0.12);
+  --shadow-card: 0 2px 12px rgba(14, 26, 12, 0.07), 0 1px 3px rgba(14, 26, 12, 0.05);
 }
 
 .dark {
   /* ---- DARK THEME ---- */
-  --background: #0b0e08;
-  --foreground: #f2f3ec;
-  --muted: #9ba294;
-  --card: #141a0f;
-  --card-soft: #1a2213;
-  --line: rgba(242, 243, 236, 0.12);
-  --glass: rgba(16, 21, 12, 0.55);
-  --glow-primary: rgba(247, 148, 29, 0.18);
-  --glow-secondary: rgba(91, 168, 41, 0.18);
-  --shadow-3d: 0 30px 60px -20px rgba(0, 0, 0, 0.65);
+  --background: #080c07;
+  --foreground: #eef0e8;
+  --muted: #8a9688;
+  --card: #111708;
+  --card-soft: #171f0f;
+  --line: rgba(238, 240, 232, 0.1);
+  --glass: rgba(13, 18, 10, 0.7);
+  --glow-primary: rgba(224, 124, 10, 0.2);
+  --glow-secondary: rgba(58, 138, 26, 0.2);
+  --shadow-3d: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Tailwind ko variables se jorna — classes jaise bg-primary,
@@ -168,6 +170,15 @@ h4, h5, h6 {
 }
 .shadow-3d {
   box-shadow: var(--shadow-3d);
+}
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* Premium section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
 }
 
 /* Outline (hollow) text — awwwards style backgrounds */

@@ -124,7 +124,7 @@ export function Preloader() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.95, duration: 0.65 }}
-          className="text-[0.65rem] font-medium tracking-[0.55em] text-white/40 uppercase"
+          className="text-center text-[0.65rem] font-medium tracking-[0.25em] sm:tracking-[0.55em] text-white/40 uppercase px-6"
         >
           Building the home for plant&#8209;based brands
         </motion.p>

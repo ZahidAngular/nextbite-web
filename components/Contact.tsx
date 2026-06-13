@@ -46,7 +46,7 @@ export function Contact() {
   };
 
   return (
-    <section ref={ref} id="contact" className="relative overflow-hidden py-28">
+    <section ref={ref} id="contact" className="relative overflow-hidden py-24 bg-card-soft">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="animate-float absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-secondary/10 blur-3xl" />
         <div className="animate-float-slow absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />

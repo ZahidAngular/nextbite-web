@@ -49,7 +49,7 @@ export function HowWeWork() {
   const sectionY = useTransform(scrollYProgress, [0, 0.4], [60, 0]);
 
   return (
-    <section ref={ref} id="how-we-work" className="relative overflow-hidden py-28">
+    <section ref={ref} id="how-we-work" className="relative overflow-hidden py-24 bg-card-soft">
       {/* ambient blobs */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="animate-float-slow absolute top-20 -left-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
