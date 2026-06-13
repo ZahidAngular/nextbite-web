@@ -80,11 +80,11 @@ export function Hero() {
           </motion.p>
 
           {/* GIANT headline — Bricolage Grotesque award-site style */}
-          <h1 className="font-hero text-[clamp(3.4rem,8vw,7.5rem)] tracking-[-0.04em] leading-[0.9]">
+          <h1 className="font-hero text-[clamp(2.8rem,8vw,7.5rem)] tracking-[-0.04em] leading-[0.92]">
             <span className="block overflow-hidden font-extrabold">
               <RevealWords text="Building the" delay={2.4} />
             </span>
-            <span className="block overflow-hidden font-light text-foreground/35 tracking-[-0.02em]">
+            <span className="block overflow-hidden font-light text-foreground/55 tracking-[-0.02em]">
               <RevealWords text="home for" delay={2.55} />
             </span>
             <span className="block overflow-hidden font-extrabold">
@@ -99,7 +99,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.1, duration: 0.8 }}
-            className="mt-9 max-w-lg text-lg leading-relaxed text-muted"
+            className="mt-7 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
           >
             A next-generation food platform focused on owning, licensing, launching, and
             scaling leading plant-based brands across Australia and New Zealand.
@@ -135,12 +135,34 @@ export function Hero() {
             </MagneticButton>
           </motion.div>
 
+          {/* mobile hero image — only visible on small screens */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.1, duration: 0.9 }}
+            className="relative mt-10 h-56 w-full overflow-hidden rounded-3xl lg:hidden"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80"
+              alt="Fresh plant-based ingredients"
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary-dark/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4">
+              <p className="text-[10px] font-semibold tracking-widest text-white/70 uppercase">Plant-Based</p>
+              <p className="font-heading text-base font-bold text-white">Fresh &amp; Sustainable</p>
+            </div>
+          </motion.div>
+
           {/* micro stats */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.6 }}
-            className="mt-14 flex gap-10 border-t border-line pt-8"
+            className="mt-10 flex flex-wrap gap-6 border-t border-line pt-8 sm:gap-10"
           >
             {[
               { val: "AU & NZ", label: "Markets Covered" },

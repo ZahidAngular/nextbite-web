@@ -28,7 +28,7 @@ export function About() {
       <motion.span
         aria-hidden
         style={{ y: bgTextY, rotate: bgTextRotate }}
-        className="text-stroke font-heading pointer-events-none absolute top-8 left-1/2 -translate-x-1/2 text-[16vw] font-bold whitespace-nowrap opacity-50 select-none"
+        className="text-stroke font-heading pointer-events-none absolute top-8 left-1/2 -translate-x-1/2 text-[16vw] font-bold whitespace-nowrap opacity-50 select-none max-lg:hidden"
       >
         NEXTBITE
       </motion.span>
@@ -37,16 +37,16 @@ export function About() {
         {/* ── image with scroll-linked 3D rotation ── */}
         <Reveal3D direction="left">
           <motion.div style={{ rotateY: imgRotateY, z: imgZ, perspective: "1200px" }}>
-            <TiltCard className="shadow-3d overflow-hidden rounded-[2.5rem]">
-              <div className="relative aspect-[4/3]">
+            <TiltCard className="shadow-3d overflow-hidden rounded-[2.5rem] isolate h-full">
+              <div className="relative h-72 w-full sm:h-80 lg:h-full lg:min-h-[620px]">
                 <Image
                   src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1000&q=80"
                   alt="Plant-based food platform"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-center scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-secondary-dark/40 via-transparent to-primary/20" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-secondary-dark/20 via-transparent to-primary/10 hidden lg:block" />
               </div>
               {/* floating stat chip */}
               <motion.div

@@ -10,22 +10,22 @@
 
 :root {
   /* ---- BRAND COLORS (logo se) ---- */
-  --primary: #f7941d; /* NextBite orange */
-  --primary-dark: #d97a06;
-  --secondary: #5ba829; /* NextBite green */
-  --secondary-dark: #3e7b1f;
+  --primary: #e8860f;       /* orange — slightly deeper for light bg contrast */
+  --primary-dark: #c46f0a;
+  --secondary: #3d8c1e;     /* green — richer, more legible on white */
+  --secondary-dark: #2a6314;
 
-  /* ---- LIGHT THEME ---- */
-  --background: #fdfbf6;
-  --foreground: #161a12;
-  --muted: #5d6457;
+  /* ---- LIGHT THEME — clean, premium, professional ---- */
+  --background: #f8f7f3;    /* warm off-white, not harsh */
+  --foreground: #12180f;    /* deep forest-black, easy on eyes */
+  --muted: #4a5248;         /* darker warm slate — strong contrast on light bg */
   --card: #ffffff;
-  --card-soft: #f4f1e8;
-  --line: rgba(22, 26, 18, 0.1);
-  --glass: rgba(255, 255, 255, 0.65);
-  --glow-primary: rgba(247, 148, 29, 0.25);
-  --glow-secondary: rgba(91, 168, 41, 0.25);
-  --shadow-3d: 0 30px 60px -20px rgba(22, 26, 18, 0.25);
+  --card-soft: #eeecea;     /* subtle warm card bg */
+  --line: rgba(18, 24, 15, 0.1);
+  --glass: rgba(255, 255, 255, 0.82);
+  --glow-primary: rgba(232, 134, 15, 0.18);
+  --glow-secondary: rgba(61, 140, 30, 0.18);
+  --shadow-3d: 0 24px 56px -16px rgba(18, 24, 15, 0.14);
 }
 
 .dark {
@@ -174,6 +174,19 @@ h4, h5, h6 {
 .text-stroke {
   -webkit-text-stroke: 1.5px var(--line);
   color: transparent;
+}
+
+/* About watermark — faint on desktop, dark stroke on mobile */
+.about-watermark {
+  -webkit-text-stroke: 1.5px var(--line);
+  color: transparent;
+  opacity: 0.5;
+}
+@media (max-width: 1023px) {
+  .about-watermark {
+    -webkit-text-stroke: 2px rgba(18, 24, 15, 0.45);
+    opacity: 1;
+  }
 }
 
 /* ---------------- ANIMATIONS ---------------- */
