@@ -21,7 +21,7 @@ export function Marquee() {
             key={i}
             className="font-heading flex items-center gap-10 text-lg font-semibold tracking-wide uppercase"
           >
-            <span className={i % 2 === 0 ? "text-foreground" : "text-stroke"}>{item}</span>
+            <span className={i % 3 === 0 ? "text-foreground" : i % 3 === 1 ? "text-primary" : "text-secondary"}>{item}</span>
             <Leaf size={18} className={i % 2 === 0 ? "text-secondary" : "text-primary"} />
           </span>
         ))}

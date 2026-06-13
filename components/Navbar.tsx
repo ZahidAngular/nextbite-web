@@ -49,7 +49,7 @@ export function Navbar() {
         className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gradient-to-r from-primary to-secondary"
       />
 
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         <a href="#" aria-label="NextBite home">
           <Logo />
         </a>
