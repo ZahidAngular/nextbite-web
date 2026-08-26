@@ -44,6 +44,3 @@ next-env.d.ts
 
 # enquiry submissions (local storage sink)
 /.data/
-
-# static export output (Firebase deploy artifact)
-/out/
