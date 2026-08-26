@@ -65,7 +65,7 @@ export function EnquiryModal({
             className="relative my-auto w-full max-w-lg rounded-[1.75rem] border border-line bg-background shadow-3d outline-none"
           >
             {/* header */}
-            <div className="relative overflow-hidden rounded-t-[1.75rem] bg-gradient-to-br from-primary to-secondary px-7 py-6 text-white">
+            <div className="relative overflow-hidden rounded-t-[1.75rem] bg-gradient-to-br from-primary to-secondary px-6 py-4 text-white sm:px-7 sm:py-5 [@media(max-height:560px)]:py-2.5">
               <span
                 aria-hidden
                 className="absolute inset-0 opacity-20"
@@ -76,12 +76,12 @@ export function EnquiryModal({
               />
               <div className="relative flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.22em] uppercase opacity-90">
+                  <p className="text-[10px] font-bold tracking-[0.22em] uppercase opacity-90 [@media(max-height:560px)]:hidden">
                     {SHOW.name} {SHOW.year} · Stand {SHOW.stand}
                   </p>
                   <h2
                     id="enquiry-title"
-                    className="font-heading mt-1.5 text-2xl font-bold tracking-tight"
+                    className="font-heading mt-1 text-xl font-bold tracking-tight sm:text-2xl [@media(max-height:560px)]:mt-0 [@media(max-height:560px)]:text-lg"
                   >
                     Send an enquiry
                   </h2>
@@ -99,7 +99,7 @@ export function EnquiryModal({
             </div>
 
             {/* body */}
-            <div className="px-7 py-7">
+            <div className="px-6 py-5 sm:px-7 sm:py-6 [@media(max-height:560px)]:py-3">
               <EnquiryForm source="modal" onDone={onClose} compact />
             </div>
           </motion.div>

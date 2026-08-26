@@ -54,7 +54,7 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="mb-2 flex items-center gap-2 text-[13px] font-semibold"
+        className="mb-1.5 flex items-center gap-2 text-[13px] font-semibold"
       >
         <Icon size={14} className="text-primary" />
         {label}
@@ -70,13 +70,13 @@ function Field({
         <p
           id={`${id}-error`}
           role="alert"
-          className="mt-1.5 flex items-center gap-1.5 text-[12px] font-medium text-red-600 dark:text-red-400"
+          className="mt-1 flex items-center gap-1.5 text-[12px] font-medium text-red-600 dark:text-red-400"
         >
           <TriangleAlert size={12} />
           {error}
         </p>
       ) : hint ? (
-        <p className="mt-1.5 text-[12px] text-muted">{hint}</p>
+        <p className="mt-1 text-[12px] text-muted">{hint}</p>
       ) : null}
     </div>
   );
@@ -91,7 +91,7 @@ const ENDPOINT =
   process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT?.trim() || "/api/enquiry";
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-card px-4 py-3 text-[15px] outline-none transition-colors placeholder:text-muted/60 focus:border-primary focus:ring-2 focus:ring-primary/25";
+  "w-full rounded-xl border border-line bg-card px-4 py-2.5 text-[15px] outline-none transition-colors placeholder:text-muted/60 focus:border-primary focus:ring-2 focus:ring-primary/25";
 
 /* ══════════════════════════════════════════════
    Two-step enquiry form
@@ -277,8 +277,8 @@ export function EnquiryForm({
   return (
     <form onSubmit={submit} noValidate className={compact ? "" : "px-1"}>
       {/* ── progress ─────────────────────────── */}
-      <div className="mb-7">
-        <div className="mb-2.5 flex items-center justify-between text-[11px] font-bold tracking-[0.16em] uppercase">
+      <div className="mb-5 [@media(max-height:560px)]:mb-3">
+        <div className="mb-2 flex items-center justify-between text-[11px] font-bold tracking-[0.16em] uppercase">
           <span className={step === 1 ? "text-primary" : "text-muted"}>
             1 · Your details
           </span>
@@ -305,7 +305,7 @@ export function EnquiryForm({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.28 }}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-3.5 [@media(max-height:560px)]:gap-2"
           >
             <Field id="name" label="Full name" icon={User} error={errors.name} required>
               <input
@@ -369,7 +369,7 @@ export function EnquiryForm({
             <button
               type="button"
               onClick={goNext}
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl"
             >
               Save &amp; next
               <ArrowRight size={16} />
@@ -383,7 +383,7 @@ export function EnquiryForm({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 24 }}
             transition={{ duration: 0.28 }}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-3.5 [@media(max-height:560px)]:gap-2"
           >
             <Field id="company" label="Company name" icon={Building2} error={errors.company}>
               <input
@@ -409,7 +409,7 @@ export function EnquiryForm({
               <textarea
                 id="message"
                 name="message"
-                rows={4}
+                rows={3}
                 className={`${inputClass} resize-y`}
                 placeholder="Which brands or products are you interested in? Retail, wholesale or foodservice?"
                 value={fields.message}
@@ -437,7 +437,7 @@ export function EnquiryForm({
               />
 
               {file ? (
-                <div className="flex items-center gap-3 rounded-xl border border-line bg-card-soft px-4 py-3">
+                <div className="flex items-center gap-3 rounded-xl border border-line bg-card-soft px-4 py-2.5">
                   <Paperclip size={15} className="shrink-0 text-secondary" />
                   <span className="min-w-0 flex-1 truncate text-sm font-medium">
                     {file.name}
@@ -460,7 +460,7 @@ export function EnquiryForm({
               ) : (
                 <label
                   htmlFor="attachment"
-                  className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-line bg-card-soft px-4 py-5 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
+                  className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-line bg-card-soft px-4 py-3 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
                 >
                   <Paperclip size={15} />
                   Choose a file
@@ -469,12 +469,12 @@ export function EnquiryForm({
             </Field>
 
             {/* ── actions ── */}
-            <div className="mt-1 flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={() => setStep(1)}
                 disabled={sending}
-                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3.5 text-sm font-semibold transition-colors hover:border-primary hover:text-primary disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary disabled:opacity-50"
               >
                 <ArrowLeft size={16} />
                 Back
@@ -483,7 +483,7 @@ export function EnquiryForm({
               <button
                 type="submit"
                 disabled={sending}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl disabled:opacity-70"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl disabled:opacity-70"
               >
                 {sending ? (
                   <>
