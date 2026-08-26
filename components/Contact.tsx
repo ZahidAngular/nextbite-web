@@ -2,8 +2,9 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { RevealWords, Reveal } from "./Reveal";
+import { submitLead } from "@/lib/formService";
 
 const info = [
   { icon: Mail,    label: "info@nextbite.com.au",   href: "mailto:info@nextbite.com.au" },
@@ -17,6 +18,8 @@ const inputClass =
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const ref = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -34,15 +37,24 @@ export function Contact() {
   const formX       = useTransform(scrollYProgress, [0, 0.45], [80, 0]);
   const formOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data    = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`Website enquiry from ${data.get("name")}`);
-    const body    = encodeURIComponent(
-      `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\n\n${data.get("message")}`
-    );
-    window.location.href = `mailto:info@nextbite.com.au?subject=${subject}&body=${body}`;
-    setSent(true);
+    setError(null);
+    setLoading(true);
+    const data = new FormData(e.currentTarget);
+    try {
+      await submitLead({
+        fullName: String(data.get("name") ?? ""),
+        email:    String(data.get("email") ?? ""),
+        phone:    String(data.get("phone") ?? ""),
+        comment:  String(data.get("message") ?? ""),
+      });
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -122,14 +134,20 @@ export function Contact() {
               </div>
               <input  name="phone" type="tel"  required placeholder="Phone *" className={`${inputClass} mt-5`} />
               <textarea name="message" rows={5} placeholder="Message" className={`${inputClass} mt-5 resize-none`} />
+              {error && (
+                <p className="mt-4 text-sm text-red-500">{error}</p>
+              )}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="mt-7 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary py-4 font-semibold text-white shadow-lg"
+                disabled={loading || sent}
+                whileHover={!loading && !sent ? { scale: 1.02, y: -2 } : undefined}
+                whileTap={!loading && !sent ? { scale: 0.97 } : undefined}
+                className="mt-7 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary to-secondary py-4 font-semibold text-white shadow-lg disabled:opacity-70"
               >
                 {sent ? (
-                  <><CheckCircle2 size={18} /> Opening your email app…</>
+                  <><CheckCircle2 size={18} /> Message Sent!</>
+                ) : loading ? (
+                  <><Loader2 size={18} className="animate-spin" /> Sending…</>
                 ) : (
                   <><Send size={18} /> Send Message</>
                 )}
