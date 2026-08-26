@@ -24,6 +24,7 @@ const isRoute = (href: string) => !href.startsWith("#");
 const defaultLinks: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "What We Do", href: "#what-we-do" },
+  { label: "How We Work", href: "#how-we-work" },
   { label: "Expertise", href: "#expertise" },
   { label: "Fine Food Show", href: "/fine-food-show" },
   { label: "Contact", href: "#contact" },
