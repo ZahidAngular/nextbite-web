@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Building2,
+  Check,
   CheckCircle2,
   Loader2,
   Mail,
@@ -82,13 +83,17 @@ function Field({
   );
 }
 
-/* Kahan bheji jaye — static hosting (jaise Firebase Hosting) par
-   /api/enquiry chalti hi nahi, kyunke wahan koi Node server nahi hota.
-   Aise host par NEXT_PUBLIC_ENQUIRY_ENDPOINT set karo (Formspree,
-   Web3Forms, Firebase Function, Zapier catch hook — jo bhi FormData
-   qubool kare). Set na ho to apni API route istemal hoti hai. */
+/* NextBite API (.NET) ka pata. Set na ho to Next.js ki apni
+   /api/enquiry route chalti hai — jo sirf Node hosting par kaam
+   karti hai, static export par nahi. */
 const ENDPOINT =
   process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT?.trim() || "/api/enquiry";
+
+/* .NET API do marhalon mein leti hai: pehle POST se enquiry banti
+   hai aur token milta hai, phir usi token ke saath PATCH se tafseel
+   jurti hai. Purani single-shot route mein PATCH nahi hai, is liye
+   sirf asal API par do-marhala flow chalta hai. */
+const IS_TWO_PHASE = ENDPOINT !== "/api/enquiry";
 
 const inputClass =
   "w-full rounded-xl border border-line bg-card px-4 py-2.5 text-[15px] outline-none transition-colors placeholder:text-muted/60 focus:border-primary focus:ring-2 focus:ring-primary/25";
@@ -116,6 +121,9 @@ export function EnquiryForm({
   const [sent, setSent] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
+  /* Step 1 kamiyab hone ke baad — enquiry pehle hi mehfooz hai */
+  const [saved, setSaved] = useState<{ id: number; token?: string } | null>(null);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
@@ -133,16 +141,60 @@ export function EnquiryForm({
   const blur = (key: keyof EnquiryFields) =>
     setErrors((e) => ({ ...e, [key]: validateField(key, fields[key]) }));
 
-  /* ── step 1 → 2 ─────────────────────────────── */
-  const goNext = () => {
+  /* ── step 1 → save → step 2 ──────────────────────────────────
+     Yahin enquiry mehfooz ho jati hai. User step 2 chhor de tab
+     bhi uska raabta team ke paas pohanch chuka hota hai.        */
+  const goNext = async () => {
+    if (sending) return;
+
     const next: FieldErrors = {};
     STEP_ONE_FIELDS.forEach((key) => {
       next[key] = validateField(key, fields[key]);
     });
     setErrors((e) => ({ ...e, ...next }));
     if (STEP_ONE_FIELDS.some((k) => next[k])) return;
+
     setFormError(null);
-    setStep(2);
+
+    /* purani single-shot route par save aakhir mein hota hai */
+    if (!IS_TWO_PHASE) {
+      setStep(2);
+      return;
+    }
+
+    /* dobara "Save & next" dabaya jaye to naya record na bane */
+    if (saved) {
+      setStep(2);
+      return;
+    }
+
+    setSending(true);
+    try {
+      const body = new FormData();
+      STEP_ONE_FIELDS.forEach((k) => body.append(k, fields[k]));
+      body.append("source", source);
+
+      const res = await fetch(ENDPOINT, { method: "POST", body });
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        if (data?.errors) setErrors(data.errors as FieldErrors);
+        setFormError(
+          data?.message ??
+            "We couldn't save your details. Please try again, or email travis@nextbite.com.au."
+        );
+        return;
+      }
+
+      setSaved({ id: data.id, token: data.token });
+      setStep(2);
+    } catch {
+      setFormError(
+        "We couldn't reach the server. Please check your connection, or email travis@nextbite.com.au."
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   /* ── attachment ─────────────────────────────── */
@@ -191,13 +243,31 @@ export function EnquiryForm({
 
     try {
       const body = new FormData();
-      (Object.keys(fields) as (keyof EnquiryFields)[]).forEach((k) =>
-        body.append(k, fields[k])
-      );
-      body.append("source", source);
+
+      /* Step 1 pehle hi save ho chuka ho to sirf tafseel bhejo —
+         wohi enquiry PATCH se update hoti hai, nayi nahi banti. */
+      const patching = IS_TWO_PHASE && saved?.token;
+
+      if (patching) {
+        body.append("token", saved!.token!);
+      } else {
+        (Object.keys(fields) as (keyof EnquiryFields)[]).forEach((k) =>
+          body.append(k, fields[k])
+        );
+        body.append("source", source);
+      }
+
+      if (patching) {
+        body.append("company", fields.company);
+        body.append("message", fields.message);
+      }
+
       if (file) body.append("attachment", file);
 
-      const res = await fetch(ENDPOINT, { method: "POST", body });
+      const res = await fetch(
+        patching ? `${ENDPOINT}/${saved!.id}` : ENDPOINT,
+        { method: patching ? "PATCH" : "POST", body }
+      );
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
@@ -240,9 +310,12 @@ export function EnquiryForm({
           Thanks, {fields.name.split(" ")[0] || "there"}.
         </h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-          Your enquiry is with the NextBite team. We&apos;ll be in touch at{" "}
-          <span className="font-medium text-foreground">{fields.email}</span> —
-          and do come and say hello at Stand HB27.
+          {saved
+            ? "We've sent a confirmation to "
+            : "Your enquiry is with the NextBite team. We'll be in touch at "}
+          <span className="font-medium text-foreground">{fields.email}</span>
+          {saved ? " and the team has your enquiry." : "."} Do come and say
+          hello at Stand HB27.
         </p>
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -252,6 +325,7 @@ export function EnquiryForm({
               setFields(EMPTY_ENQUIRY);
               setFile(null);
               setErrors({});
+              setSaved(null);
               setStep(1);
               setSent(false);
             }}
@@ -369,10 +443,20 @@ export function EnquiryForm({
             <button
               type="button"
               onClick={goNext}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl"
+              disabled={sending}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl disabled:opacity-70"
             >
-              Save &amp; next
-              <ArrowRight size={16} />
+              {sending ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Saving…
+                </>
+              ) : (
+                <>
+                  Save &amp; next
+                  <ArrowRight size={16} />
+                </>
+              )}
             </button>
           </motion.div>
         ) : (
@@ -385,6 +469,14 @@ export function EnquiryForm({
             transition={{ duration: 0.28 }}
             className="flex flex-col gap-3.5 [@media(max-height:560px)]:gap-2"
           >
+            {saved && (
+              <p className="flex items-start gap-2 rounded-xl border border-secondary/30 bg-secondary/10 px-3.5 py-2.5 text-[12px] leading-relaxed font-medium text-secondary">
+                <CheckCircle2 size={14} className="mt-px shrink-0" />
+                Saved — we&apos;ve emailed you a confirmation. Anything below is
+                optional.
+              </p>
+            )}
+
             <Field id="company" label="Company name" icon={Building2} error={errors.company}>
               <input
                 ref={firstFieldRef}
@@ -470,15 +562,28 @@ export function EnquiryForm({
 
             {/* ── actions ── */}
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                disabled={sending}
-                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary disabled:opacity-50"
-              >
-                <ArrowLeft size={16} />
-                Back
-              </button>
+              {saved ? (
+                /* Enquiry mehfooz hai — user yahin ruk sakta hai */
+                <button
+                  type="button"
+                  onClick={() => setSent(true)}
+                  disabled={sending}
+                  className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary disabled:opacity-50"
+                >
+                  <Check size={16} />
+                  That&apos;s everything
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  disabled={sending}
+                  className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary disabled:opacity-50"
+                >
+                  <ArrowLeft size={16} />
+                  Back
+                </button>
+              )}
 
               <button
                 type="submit"
