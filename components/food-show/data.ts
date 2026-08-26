@@ -452,6 +452,7 @@ export const BRANDS: Brand[] = [
             size: "375g",
             temp: "CHILLED",
             desc: "Marinated tofu with a zesty ginger-and-honey glaze.",
+            image: "/food-show/tonzu/ginger-and-honey.webp",
           },
           {
             name: "Teriyaki Tofu Cubes",
@@ -465,6 +466,7 @@ export const BRANDS: Brand[] = [
             size: "200g",
             temp: "CHILLED",
             desc: "Seasoned wholefood tofu nuggets.",
+            image: "/food-show/tonzu/tofu-nuggets.webp",
           },
         ],
       },
