@@ -82,6 +82,14 @@ function Field({
   );
 }
 
+/* Kahan bheji jaye — static hosting (jaise Firebase Hosting) par
+   /api/enquiry chalti hi nahi, kyunke wahan koi Node server nahi hota.
+   Aise host par NEXT_PUBLIC_ENQUIRY_ENDPOINT set karo (Formspree,
+   Web3Forms, Firebase Function, Zapier catch hook — jo bhi FormData
+   qubool kare). Set na ho to apni API route istemal hoti hai. */
+const ENDPOINT =
+  process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT?.trim() || "/api/enquiry";
+
 const inputClass =
   "w-full rounded-xl border border-line bg-card px-4 py-3 text-[15px] outline-none transition-colors placeholder:text-muted/60 focus:border-primary focus:ring-2 focus:ring-primary/25";
 
@@ -189,13 +197,14 @@ export function EnquiryForm({
       body.append("source", source);
       if (file) body.append("attachment", file);
 
-      const res = await fetch("/api/enquiry", { method: "POST", body });
+      const res = await fetch(ENDPOINT, { method: "POST", body });
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
         if (data?.errors) setErrors(data.errors as FieldErrors);
         setFormError(
-          data?.message ?? "Something went wrong. Please try again."
+          data?.message ??
+            "We couldn't submit that. Please try again, or email travis@nextbite.com.au."
         );
         /* agar galti step 1 mein hai to wahin wapas le jao */
         if (data?.errors && STEP_ONE_FIELDS.some((k) => data.errors[k])) {

@@ -29,8 +29,10 @@ import {
    khamoshi se zaya na ho.
    ═══════════════════════════════════════════════════════════════ */
 
+/* `dynamic = "force-dynamic"` yahan jaan boojh kar nahi hai:
+   POST route waise bhi cache nahi hota, aur uski maujoodgi
+   `output: "export"` wali static build ko tor deti hai. */
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
 
 const DATA_DIR = path.join(process.cwd(), ".data", "enquiries");
 const LOG_FILE = path.join(DATA_DIR, "enquiries.jsonl");
