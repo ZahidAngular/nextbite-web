@@ -83,7 +83,7 @@ export function EnquiryModal({
                     id="enquiry-title"
                     className="font-heading mt-1 text-xl font-bold tracking-tight sm:text-2xl [@media(max-height:560px)]:mt-0 [@media(max-height:560px)]:text-lg"
                   >
-                    Send an enquiry
+                    Fine Food Show Enquiry
                   </h2>
                 </div>
 

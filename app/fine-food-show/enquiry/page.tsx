@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { EnquiryForm } from "@/components/food-show/EnquiryForm";
 import { DISTRIBUTION, SHOW } from "@/components/food-show/data";
 
@@ -37,13 +38,18 @@ export default function EnquiryPage() {
 
       {/* ── top bar ─────────────────────────────────────────── */}
       <header className="flex shrink-0 items-center justify-between gap-3 px-5 py-3 sm:px-8 sm:py-4">
+        {/* Logo khud hi wapas jane ka rasta hai — ek hi qatar mein
+            rehta hai taake page ki unchai na barhe */}
         <Link
           href="/fine-food-show"
-          className="inline-flex items-center gap-1.5 text-[12px] font-medium text-muted transition-colors hover:text-foreground sm:text-[13px]"
+          aria-label="Back to the Fine Food Show portfolio"
+          className="group inline-flex items-center gap-2.5"
         >
-          <ArrowLeft size={14} />
-          <span className="hidden sm:inline">Back to the portfolio</span>
-          <span className="sm:hidden">Back</span>
+          <ArrowLeft
+            size={15}
+            className="shrink-0 text-muted transition-colors group-hover:text-foreground"
+          />
+          <Logo imageClassName="h-11 w-auto sm:h-14" />
         </Link>
 
         <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-primary to-secondary px-3 py-1.5 text-[9px] font-bold tracking-[0.16em] text-white uppercase sm:px-4 sm:text-[10px]">
@@ -57,7 +63,7 @@ export default function EnquiryPage() {
         {/* left — desktop par tafseel, mobile par sirf chhota title */}
         <div className="shrink-0 lg:max-w-sm">
           <h1 className="text-[clamp(1.5rem,6vw,3rem)] leading-[1.05]">
-            Send an <span className="text-gradient">enquiry</span>
+            Fine Food Show <span className="text-gradient">Enquiry</span>
           </h1>
 
           <p className="mt-3 hidden text-[15px] leading-relaxed text-muted sm:block">
