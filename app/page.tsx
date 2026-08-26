@@ -2,6 +2,7 @@ import { Preloader } from "@/components/Preloader";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { FoodShowPromo } from "@/components/FoodShowPromo";
 import { About } from "@/components/About";
 import { WhatWeDo } from "@/components/WhatWeDo";
 import { HowWeWork } from "@/components/HowWeWork";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Marquee />
+      <FoodShowPromo />
       <About />
       <WhatWeDo />
       <HowWeWork />
