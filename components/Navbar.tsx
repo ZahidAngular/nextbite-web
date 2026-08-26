@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -14,15 +15,34 @@ import { ThemeToggle } from "./ThemeToggle";
 import { MagneticButton } from "./MagneticButton";
 import { cn } from "@/lib/utils";
 
-const links = [
+type NavLink = { label: string; href: string };
+
+/** "#about" jaisi links same page par scroll karti hain — un par <a>.
+ *  "/fine-food-show" jaisi routes par <Link>, warna poora page reload hota hai. */
+const isRoute = (href: string) => !href.startsWith("#");
+
+const defaultLinks: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "What We Do", href: "#what-we-do" },
   { label: "How We Work", href: "#how-we-work" },
   { label: "Expertise", href: "#expertise" },
+  { label: "Fine Food Show", href: "/fine-food-show" },
   { label: "Contact", href: "#contact" },
 ];
 
-export function Navbar() {
+/**
+ * Har page apni links aur CTA pass kar sakta hai.
+ * Kuch na do to homepage wali default nav chalti hai.
+ */
+export function Navbar({
+  links = defaultLinks,
+  homeHref = "#",
+  cta = { label: "Contact Us", href: "#contact" },
+}: {
+  links?: NavLink[];
+  homeHref?: string;
+  cta?: NavLink;
+} = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -50,7 +70,7 @@ export function Navbar() {
       />
 
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
-        <a href="#" aria-label="NextBite home">
+        <a href={homeHref} aria-label="NextBite home">
           <Logo />
         </a>
 
@@ -58,13 +78,18 @@ export function Navbar() {
         <ul className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="group relative text-sm font-medium text-muted transition-colors hover:text-foreground"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
-              </a>
+              {(() => {
+                const As = isRoute(link.href) ? Link : "a";
+                return (
+                  <As
+                    href={link.href}
+                    className="group relative text-sm font-medium text-muted transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
+                  </As>
+                );
+              })()}
             </li>
           ))}
         </ul>
@@ -73,12 +98,12 @@ export function Navbar() {
           <ThemeToggle />
           <MagneticButton className="hidden lg:block">
             <motion.a
-              href="#contact"
+              href={cta.href}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
               className="block rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-2.5 text-sm font-semibold text-white shadow-lg"
             >
-              Contact Us
+              {cta.label}
             </motion.a>
           </MagneticButton>
           {/* mobile menu button */}
@@ -110,13 +135,18 @@ export function Navbar() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: i * 0.05 }}
                 >
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-xl px-4 py-3 font-medium text-muted transition-colors hover:bg-card-soft hover:text-primary"
-                  >
-                    {link.label}
-                  </a>
+                  {(() => {
+                    const As = isRoute(link.href) ? Link : "a";
+                    return (
+                      <As
+                        href={link.href}
+                        onClick={() => setOpen(false)}
+                        className="block rounded-xl px-4 py-3 font-medium text-muted transition-colors hover:bg-card-soft hover:text-primary"
+                      >
+                        {link.label}
+                      </As>
+                    );
+                  })()}
                 </motion.li>
               ))}
             </ul>
