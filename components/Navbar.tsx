@@ -14,7 +14,9 @@ import { ThemeToggle } from "./ThemeToggle";
 import { MagneticButton } from "./MagneticButton";
 import { cn } from "@/lib/utils";
 
-const links = [
+type NavLink = { label: string; href: string };
+
+const defaultLinks: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "What We Do", href: "#what-we-do" },
   { label: "How We Work", href: "#how-we-work" },
@@ -22,7 +24,19 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function Navbar() {
+/**
+ * Har page apni links aur CTA pass kar sakta hai.
+ * Kuch na do to homepage wali default nav chalti hai.
+ */
+export function Navbar({
+  links = defaultLinks,
+  homeHref = "#",
+  cta = { label: "Contact Us", href: "#contact" },
+}: {
+  links?: NavLink[];
+  homeHref?: string;
+  cta?: NavLink;
+} = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -50,7 +64,7 @@ export function Navbar() {
       />
 
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
-        <a href="#" aria-label="NextBite home">
+        <a href={homeHref} aria-label="NextBite home">
           <Logo />
         </a>
 
@@ -73,12 +87,12 @@ export function Navbar() {
           <ThemeToggle />
           <MagneticButton className="hidden lg:block">
             <motion.a
-              href="#contact"
+              href={cta.href}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
               className="block rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-2.5 text-sm font-semibold text-white shadow-lg"
             >
-              Contact Us
+              {cta.label}
             </motion.a>
           </MagneticButton>
           {/* mobile menu button */}

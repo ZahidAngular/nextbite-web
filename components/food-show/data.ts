@@ -1,0 +1,694 @@
+import {
+  Amphora,
+  Bean,
+  Beef,
+  Cookie,
+  type LucideIcon,
+  Milk,
+  Nut,
+  Pizza,
+  Salad,
+  Sandwich,
+  Soup,
+  Sprout,
+  Utensils,
+} from "lucide-react";
+
+/* ═══════════════════════════════════════════════════════════════
+   FINE FOOD SHOW 2026 — STAND HB27
+   Poori page ka data yahan se control hota hai.
+
+   📸 PICTURES:
+   Zyada tar pack shots brand websites se le kar `public/food-show/<brand>/`
+   mein rakhi gayi hain (webp, max 1200px) — koi hotlink nahi, sab local.
+   Jis product ka `image` khaali ho, uske liye brand-colour placeholder
+   khud render ho jata hai. Nayi tasveer add karni ho to:
+     1. file ko  public/food-show/<brand>/  mein daalo
+     2. us product par likho →  image: "/food-show/angel-food/cheddar-block.webp"
+
+   Abhi tasveer ke baghair: 4 Angel Food pizzas, Tonzu ke Ginger & Honey Tofu
+   aur Herb Tofu Nuggets, aur Zenzo ke chaaron products (zenzo.co.nz ka TLS
+   certificate 11 June 2026 ko expire ho chuka hai).
+   ═══════════════════════════════════════════════════════════════ */
+
+export const SHOW = {
+  name: "Fine Food Show",
+  year: "2026",
+  stand: "HB27",
+  headline: "Four distinct brands. One exceptional plant-based portfolio.",
+  intro:
+    "From pioneering dairy-free favourites and organic wholefoods to cultured coconut yoghurt and artisan fermented nut cheeses.",
+} as const;
+
+export type Temp = "CHILLED" | "FROZEN";
+
+/** rail filter — "ALL" plus the two storage temps */
+export type TempFilter = "ALL" | Temp;
+
+export type Product = {
+  name: string;
+  /** pack size, e.g. "350g" or "330g / 600g" */
+  size?: string;
+  desc: string;
+  temp: Temp;
+  /** 📸 real photo path — leave undefined to show the placeholder */
+  image?: string;
+};
+
+export type Category = {
+  id: string;
+  title: string;
+  /** short line printed next to the title on the flyer */
+  tagline: string;
+  blurb?: string;
+  icon: LucideIcon;
+  products: Product[];
+};
+
+export type Contact = {
+  name: string;
+  email: string;
+  phones: string[];
+  role?: string;
+};
+
+export type Brand = {
+  slug: string;
+  name: string;
+  /** the all-caps banner line from the flyer */
+  kicker: string;
+  since: string;
+  origin: string;
+  tagline: string;
+  story: string;
+  /** brand ka apna logo — public/brands/ se; na ho to icon fallback */
+  logo?: string;
+  /** brand accent — drives cards, chips, glows */
+  color: string;
+  /** second stop of the brand gradient */
+  color2: string;
+  icon: LucideIcon;
+  categories: Category[];
+  contacts: Contact[];
+  sites: string[];
+  note: string;
+};
+
+export const BRANDS: Brand[] = [
+  /* ─────────────────────────── ANGEL FOOD ─────────────────────────── */
+  {
+    slug: "angel-food",
+    name: "Angel Food",
+    kicker: "Aotearoa's plant-based pioneer since 2006",
+    since: "2006",
+    origin: "New Zealand",
+    tagline: "Your favourite foods, plant-based.",
+    story:
+      "Born in Aotearoa in 2006, Angel Food makes delicious plant-based alternatives to the foods people already love. From award-winning dairy-free cheeses to plant-based meat classics and convenient ready meals, Angel Food is all about familiar favourites without the compromise.",
+    logo: "/brands/angel-food.webp",
+    color: "#e07c0a",
+    color2: "#f0a93c",
+    icon: Milk,
+    categories: [
+      {
+        id: "dairy-free-cheese",
+        title: "Dairy-Free Cheese",
+        tagline: "Made to melt your heart.",
+        blurb:
+          "Seven favourites for melting, grating, spreading, crumbling and finishing.",
+        icon: Milk,
+        products: [
+          {
+            name: "Cheddar Block",
+            size: "350g",
+            temp: "CHILLED",
+            desc: "Classic block-in-a-tub for sandwiches, toasties and cheese boards.",
+            image: "/food-show/angel-food/cheddar-block.webp",
+          },
+          {
+            name: "Mozzarella",
+            size: "350g",
+            temp: "CHILLED",
+            desc: "Smooth dairy-free block designed for effortless melting.",
+            image: "/food-show/angel-food/mozzarella.webp",
+          },
+          {
+            name: "Grated Cheese",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Quick-melting shred for commercial pizza kitchens, tacos and bakes.",
+            image: "/food-show/angel-food/grated-cheese.webp",
+          },
+          {
+            name: "Feta",
+            size: "200g",
+            temp: "CHILLED",
+            desc: "Salty, creamy and crumbly for Mediterranean salads and savouries.",
+            image: "/food-show/angel-food/feta.webp",
+          },
+          {
+            name: "Parmesan",
+            size: "100g",
+            temp: "CHILLED",
+            desc: "Sharp, savoury finishing alternative for pasta, risotto and bakes.",
+            image: "/food-show/angel-food/parmesan.webp",
+          },
+          {
+            name: "Sour Cream",
+            size: "200g",
+            temp: "CHILLED",
+            desc: "Rich, tangy dollop for nachos, potatoes and curries.",
+            image: "/food-show/angel-food/sour-cream.webp",
+          },
+          {
+            name: "Cream Cheese",
+            size: "200g",
+            temp: "CHILLED",
+            desc: "Award-winning spread for bagels, dips and cheesecakes.",
+            image: "/food-show/angel-food/cream-cheese.webp",
+          },
+        ],
+      },
+      {
+        id: "ready-meals",
+        title: "Ready Meals",
+        tagline: "Plant goodness, ready to go.",
+        blurb:
+          "Comforting meals for when convenience matters but flavour still comes first.",
+        icon: Soup,
+        products: [
+          {
+            name: "Tofu & Greens",
+            size: "400g",
+            temp: "FROZEN",
+            desc: "Marinated tofu, spinach and jasmine rice with sesame ginger dressing.",
+            image: "/food-show/angel-food/tofu-greens.webp",
+          },
+          {
+            name: "Vege Lasagna",
+            size: "400g",
+            temp: "FROZEN",
+            desc: "Lentil ragù, tofu ricotta, béchamel and pasta sheets.",
+            image: "/food-show/angel-food/vege-lasagna.webp",
+          },
+          {
+            name: "Vege Korma",
+            size: "400g",
+            temp: "FROZEN",
+            desc: "Coconut-cashew curry with vegetables and aromatic spices.",
+            image: "/food-show/angel-food/vege-korma.webp",
+          },
+          {
+            name: "Butter Curry",
+            size: "400g",
+            temp: "FROZEN",
+            desc: "Smooth, mildly spiced plant-based butter curry.",
+            image: "/food-show/angel-food/butter-curry.webp",
+          },
+        ],
+      },
+      {
+        id: "plant-based-classics",
+        title: "Plant-Based Classics",
+        tagline: "Familiar favourites, made from plants.",
+        blurb:
+          "Burgers, fishless fingers, meatballs, pulled pork-style protein, pastrami and seafood rings.",
+        icon: Beef,
+        products: [
+          {
+            name: "Fishless Fingers",
+            size: "230g",
+            temp: "FROZEN",
+            desc: "Crispy fingers for fishless tacos, chips and tartare.",
+            image: "/food-show/angel-food/fishless-fingers.webp",
+          },
+          {
+            name: "Classic Burgers",
+            size: "255g",
+            temp: "FROZEN",
+            desc: "Hearty plant patties ready for gourmet toppings.",
+            image: "/food-show/angel-food/classic-burgers.webp",
+          },
+          {
+            name: "Meatless Balls",
+            size: "200g",
+            temp: "FROZEN",
+            desc: "Plant meatballs for tomato sauces and subs.",
+            image: "/food-show/angel-food/meatless-balls.webp",
+          },
+          {
+            name: "Pulled Pork-Style",
+            size: "200g",
+            temp: "FROZEN",
+            desc: "Tender shredded alternative for bao, tacos and sliders.",
+            image: "/food-show/angel-food/pulled-pork-style.webp",
+          },
+          {
+            name: "Plant Pastrami",
+            size: "180g",
+            temp: "FROZEN",
+            desc: "Spiced deli slices for Reuben sandwiches and platters.",
+            image: "/food-show/angel-food/plant-pastrami.webp",
+          },
+          {
+            name: "Seafood Rings",
+            size: "200g",
+            temp: "FROZEN",
+            desc: "Crispy calamari-style rings with lemon and plant-based mayo.",
+            image: "/food-show/angel-food/seafood-rings.webp",
+          },
+        ],
+      },
+      {
+        id: "frozen-pizzas",
+        title: "Frozen Pizzas",
+        tagline: "Plant-based convenience.",
+        blurb: "Ready for the oven and made for easy everyday meals.",
+        icon: Pizza,
+        products: [
+          {
+            name: "Veg Trio",
+            temp: "FROZEN",
+            desc: "Tomato base, 80g Angel Food cheese, 70g Orogel grilled zucchini, eggplant and capsicum; EVOO.",
+          },
+          {
+            name: "Pizza Parmigiana",
+            temp: "FROZEN",
+            desc: "Tomato base, 80g Angel Food cheese, 120g Orogel eggplant, tomato sauce, EVOO and Angel Food Parmesan.",
+          },
+          {
+            name: "Mediterranean",
+            temp: "FROZEN",
+            desc: "Tomato base, 80g Angel Food cheese, 40g Orogel Veg Trio, 30g caponata vegetables, EVOO and oregano.",
+          },
+          {
+            name: "Mediterranean 2",
+            temp: "FROZEN",
+            desc: "Tomato base, 80g Angel Food cheese, 50g Orogel Veg Trio, 20g pitted Kalamata olives, EVOO and oregano.",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Travis",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+    ],
+    sites: ["angelfood.co.nz", "nextbite.com.au"],
+    note: "Foodservice packs and bulk sizes available — contact to discuss custom options.",
+  },
+
+  /* ─────────────────────────── NUTTY BAY ─────────────────────────── */
+  {
+    slug: "nutty-bay",
+    name: "Nutty Bay",
+    kicker: "From nature, cultured to perfection",
+    since: "—",
+    origin: "Australia",
+    tagline: "Plant-based food with culture.",
+    story:
+      "Nutty Bay transforms premium nuts into creamy, cultured plant-based foods using traditional fermentation. Rich in flavour and crafted with live cultures, the range brings together indulgent cashew cheeses, vegan butter and beautifully simple superfood nut butters.",
+    logo: "/brands/nutty-bay.webp",
+    color: "#b4622a",
+    color2: "#dd9a55",
+    icon: Nut,
+    categories: [
+      {
+        id: "cultured-cashew-cheeses",
+        title: "Cultured Cashew Cheeses",
+        tagline: "Fermentation makes the difference.",
+        blurb:
+          "Live-cultured cashew spreads, slow-fermented for real depth of flavour.",
+        icon: Amphora,
+        products: [
+          {
+            name: "Garlic Cashew",
+            size: "270g",
+            temp: "CHILLED",
+            desc: "Savoury cultured spread with roasted garlic.",
+            image: "/food-show/nutty-bay/garlic-cashew.webp",
+          },
+          {
+            name: "Chives & Shallots",
+            size: "270g",
+            temp: "CHILLED",
+            desc: "Fresh cultured spread with chives and shallots.",
+            image: "/food-show/nutty-bay/chives-shallots.webp",
+          },
+          {
+            name: "Mushroom Umami",
+            size: "270g",
+            temp: "CHILLED",
+            desc: "Earthy fermented mushroom spread.",
+            image: "/food-show/nutty-bay/mushroom-umami.webp",
+          },
+          {
+            name: "Classic Cheesy",
+            size: "270g",
+            temp: "CHILLED",
+            desc: "Tangy cheddar-style fermented spread.",
+            image: "/food-show/nutty-bay/classic-cheesy.webp",
+          },
+          {
+            name: "Olive & Oregano",
+            size: "270g",
+            temp: "CHILLED",
+            desc: "Mediterranean olive-and-oregano blend.",
+            image: "/food-show/nutty-bay/olive-oregano.webp",
+          },
+        ],
+      },
+      {
+        id: "superfood-nut-butters",
+        title: "Superfood Nut Butters",
+        tagline: "Nuts, elevated.",
+        blurb: "Single-origin nut butters lifted with real superfood botanicals.",
+        icon: Cookie,
+        products: [
+          {
+            name: "Cashew + Maca",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Velvety cashew butter with organic maca.",
+            image: "/food-show/nutty-bay/cashew-maca.webp",
+          },
+          {
+            name: "Almond + Lucuma",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Smooth almond butter with lucuma.",
+            image: "/food-show/nutty-bay/almond-lucuma.webp",
+          },
+          {
+            name: "Macadamia + Vanilla",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Macadamia, vanilla bean and flaxseed spread.",
+            image: "/food-show/nutty-bay/macadamia-vanilla.webp",
+          },
+          {
+            name: "Vegan Butter",
+            size: "170g",
+            temp: "CHILLED",
+            desc: "Dairy-free alternative for spreading and baking.",
+            image: "/food-show/nutty-bay/vegan-butter.webp",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Atif Sharjeel",
+        role: "Orders & contact",
+        email: "info@nuttybay.com.au",
+        phones: ["+61 481 317 161"],
+      },
+      {
+        name: "Travis",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+    ],
+    sites: ["nuttybay.com.au", "nextbite.com.au"],
+    note: "Foodservice sizes available — contact to discuss venue requirements.",
+  },
+
+  /* ───────────────────────────── TONZU ───────────────────────────── */
+  {
+    slug: "tonzu",
+    name: "Tonzu",
+    kicker: "Organic wholefoods, family made since 1979",
+    since: "1979",
+    origin: "New Zealand",
+    tagline: "Plants. Tradition. Simplicity.",
+    story:
+      "Born from the Chalmers family's belief in the power of wholefoods, Tonzu has been making plant-based food in New Zealand since 1979. From traditionally crafted organic tofu and fermented tempeh to sausages, patties and marinated tofu, Tonzu brings together simple ingredients, plant protein and more than four decades of food-making experience.",
+    logo: "/brands/tonzu.webp",
+    color: "#3a8a1a",
+    color2: "#78c04a",
+    icon: Sprout,
+    categories: [
+      {
+        id: "organic-tofu",
+        title: "Organic Tofu",
+        tagline: "The heart of Tonzu.",
+        blurb:
+          "Traditionally made certified-organic tofu for stir-fries, curries, grilling and baking.",
+        icon: Bean,
+        products: [
+          {
+            name: "Traditional Tofu",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Handcrafted organic tofu made with Japanese stoneground activated beans.",
+            image: "/food-show/tonzu/traditional-tofu.webp",
+          },
+          {
+            name: "Ginger & Honey Tofu",
+            size: "375g",
+            temp: "CHILLED",
+            desc: "Marinated tofu with a zesty ginger-and-honey glaze.",
+          },
+          {
+            name: "Teriyaki Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Pre-cut organic tofu cubes in teriyaki marinade.",
+            image: "/food-show/tonzu/teriyaki-tofu-cubes.webp",
+          },
+          {
+            name: "Herb Tofu Nuggets",
+            size: "200g",
+            temp: "CHILLED",
+            desc: "Seasoned wholefood tofu nuggets.",
+          },
+        ],
+      },
+      {
+        id: "fermented-tempeh",
+        title: "Fermented Tempeh",
+        tagline: "Whole soybeans. Naturally fermented.",
+        blurb:
+          "A satisfying wholefood plant protein with characteristic texture and flavour.",
+        icon: Salad,
+        products: [
+          {
+            name: "Organic Tempeh",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Traditionally fermented whole-soybean block rich in fibre and protein.",
+            image: "/food-show/tonzu/organic-tempeh.webp",
+          },
+        ],
+      },
+      {
+        id: "sausages-patties",
+        title: "Sausages & Patties",
+        tagline: "Wholefood plants made easy.",
+        blurb:
+          "Convenient favourites built around Tonzu's longstanding expertise with soy and plant protein.",
+        icon: Sandwich,
+        products: [
+          {
+            name: "Italian Herb Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Organic soybean sausages with Mediterranean herbs.",
+            image: "/food-show/tonzu/italian-herb-sausages.webp",
+          },
+          {
+            name: "Garlic & Chilli Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Plant sausages with roasted garlic and chilli.",
+            image: "/food-show/tonzu/garlic-chilli-sausages.webp",
+          },
+          {
+            name: "Sage & Onion Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Wholefood sausages with sweet onion and sage.",
+            image: "/food-show/tonzu/sage-onion-sausages.webp",
+          },
+          {
+            name: "Smokey Horopito",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Smoky sausages with native NZ horopito pepper.",
+            image: "/food-show/tonzu/smokey-horopito.webp",
+          },
+          {
+            name: "Smokey BBQ Patties",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Hearty patties with rich barbecue flavour.",
+            image: "/food-show/tonzu/smokey-bbq-patties.webp",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Travis",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+    ],
+    sites: ["tonzu.co.nz", "chalmersorganics.co.nz", "nextbite.com.au"],
+    note: "Foodservice packs available — contact to discuss bulk supply for catering and retail.",
+  },
+
+  /* ───────────────────────────── ZENZO ───────────────────────────── */
+  {
+    slug: "zenzo",
+    name: "Zenzo",
+    kicker: "Simple ingredients. Naturally plant-based.",
+    since: "—",
+    origin: "New Zealand",
+    tagline: "Pure, cultured plant goodness.",
+    story:
+      "Zenzo creates beautifully simple dairy-free foods in New Zealand. At the heart of the range is naturally cultured coconut yoghurt — creamy, versatile and made with live vegan cultures — complemented by convenient plant-based pantry and foodservice favourites.",
+    logo: "/brands/zenzo.webp",
+    color: "#12897c",
+    color2: "#4dbfae",
+    icon: Amphora,
+    categories: [
+      {
+        id: "coconut-cream-yoghurts",
+        title: "Coconut Cream Yoghurts",
+        tagline: "Live vegan cultures, every tub.",
+        blurb:
+          "Creamy cultured coconut yoghurt in retail and foodservice-friendly sizes.",
+        icon: Milk,
+        products: [
+          {
+            name: "Natural Yoghurt",
+            size: "330g / 600g",
+            temp: "CHILLED",
+            desc: "Rich coconut yoghurt with live vegan cultures.",
+            image: "/food-show/zenzo/natural-yoghurt.webp",
+          },
+          {
+            name: "Vanilla Bean Yoghurt",
+            size: "330g / 600g",
+            temp: "CHILLED",
+            desc: "Smooth coconut yoghurt with vanilla bean.",
+            image: "/food-show/zenzo/vanilla-bean-yoghurt.webp",
+          },
+        ],
+      },
+      {
+        id: "chefs-pantry-condiments",
+        title: "Chef's Pantry Condiments",
+        tagline: "Egg-free. Dairy-free. Kitchen-ready.",
+        blurb: "Everyday plant-based staples built for busy kitchens.",
+        icon: Utensils,
+        products: [
+          {
+            name: "Egg-Free Aioli",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Creamy garlic mayonnaise alternative without eggs or dairy.",
+            image: "/food-show/zenzo/egg-free-aioli.webp",
+          },
+          {
+            name: "Dairy-Free Sour Cream",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Thick, tangy plant cream for dolloping, dipping and cooking.",
+            image: "/food-show/zenzo/dairy-free-sour-cream.webp",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Travis",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+    ],
+    sites: ["zenzo.co.nz", "nextbite.com.au"],
+    note: "Foodservice bulk sizes available — contact to discuss catering requirements.",
+  },
+];
+
+/* ─────────────────────────── SUPPORTING DATA ─────────────────────────── */
+
+export const WHY_PARTNER = [
+  "Four complementary plant-based brands",
+  "Certified-organic and naturally cultured options",
+  "Retail, trade and foodservice-ready formats",
+  "Foodservice bulk sizes available — contact to discuss",
+];
+
+export const STORAGE = [
+  {
+    temp: "FROZEN" as Temp,
+    label: "Keep Frozen",
+    items: "Pizzas · Ready meals · Angel Food plant-based meat classics",
+  },
+  {
+    temp: "CHILLED" as Temp,
+    label: "Keep Chilled",
+    items:
+      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Tonzu tofu, tempeh, sausages and patties · Zenzo yoghurts and condiments",
+  },
+];
+
+export const DISTRIBUTION: {
+  title: string;
+  subtitle: string;
+  contact: Contact;
+}[] = [
+  {
+    title: "National & International Distribution",
+    subtitle: "Distribution, wholesale and foodservice enquiries",
+    contact: {
+      name: "Travis",
+      email: "travis@nextbite.com.au",
+      phones: ["0430 952 494"],
+    },
+  },
+  {
+    title: "International Distribution & Partnership",
+    subtitle: "Export, licensing and partnership opportunities",
+    contact: {
+      name: "Atif Sharjeel",
+      email: "atif@nextbite.com.au",
+      phones: ["+61 481 317 161", "+65 8133 1443"],
+    },
+  },
+];
+
+export const ALL_SITES = [
+  "angelfood.co.nz",
+  "tonzu.co.nz",
+  "chalmersorganics.co.nz",
+  "zenzo.co.nz",
+  "nuttybay.com.au",
+  "nextbite.com.au",
+  "smartshelf.co.nz",
+];
+
+/* ─────────────────────────── DERIVED ─────────────────────────── */
+
+export const TOTAL_PRODUCTS = BRANDS.reduce(
+  (n, b) => n + b.categories.reduce((m, c) => m + c.products.length, 0),
+  0
+);
+
+export const TOTAL_CATEGORIES = BRANDS.reduce(
+  (n, b) => n + b.categories.length,
+  0
+);
+
+export function brandProductCount(brand: Brand) {
+  return brand.categories.reduce((n, c) => n + c.products.length, 0);
+}
