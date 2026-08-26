@@ -162,8 +162,16 @@ export async function POST(request: Request) {
   ]);
 
   if (!disk && !webhook) {
-    /* kahin mehfooz nahi hui — user ko sach batao, taake woh
-       email/phone se raabta kar sake aur lead zaya na ho */
+    /* Aakhri sahara: enquiry ko server log mein likh do. Vercel jaisi
+       serverless hosting par filesystem read-only hai, is liye disk
+       hamesha nakaam hoti hai — bina webhook ke lead sirf yahin se
+       mil sakti hai. Isay logs se nikaala ja sakta hai. */
+    console.error(
+      "[enquiry] NOT PERSISTED — set ENQUIRY_WEBHOOK_URL. Payload:",
+      JSON.stringify(enquiry)
+    );
+
+    /* user ko sach batao, taake woh email/phone se raabta kar sake */
     return Response.json(
       {
         ok: false,
