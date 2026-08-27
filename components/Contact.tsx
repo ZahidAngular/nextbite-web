@@ -8,8 +8,8 @@ import { submitLead } from "@/lib/formService";
 
 const info = [
   { icon: Mail,    label: "info@nextbite.com.au",   href: "mailto:info@nextbite.com.au" },
-  { icon: Phone,   label: "+61 472 539 195 (Sina)",  href: "tel:+61472539195" },
-  { icon: Phone,   label: "+61 481 317 161 (Arif)",  href: "tel:+61481317161" },
+  { icon: Phone,   label: "+61 473 236 105 (Dion Campbell)", href: "tel:+61473236105" },
+  { icon: Phone,   label: "+61 481 317 161 (Atif Sharjeel)", href: "tel:+61481317161" },
   { icon: MapPin,  label: "Australia and New Zealand", href: undefined },
 ];
 
