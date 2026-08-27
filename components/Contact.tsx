@@ -13,17 +13,6 @@ const info = [
   { icon: MapPin,  label: "Australia and New Zealand", href: undefined },
 ];
 
-/* Contact form ke baaki fields ki tarah is par bhi label nahi —
-   pehla option "NextBite" khud muntakhib hota hai. */
-const enquiryAreas = [
-  "NextBite",
-  "Smart Shelf",
-  "Stock checker",
-  "IT Services",
-  "Food and Distribution",
-  "Partnerships",
-] as const;
-
 const inputClass =
   "w-full rounded-2xl border border-line bg-card px-5 py-4 text-foreground placeholder:text-muted/60 outline-none transition-all duration-300 focus:border-secondary focus:shadow-[0_0_0_4px_var(--glow-secondary)]";
 
@@ -58,15 +47,7 @@ export function Contact() {
         fullName: String(data.get("name") ?? ""),
         email:    String(data.get("email") ?? ""),
         phone:    String(data.get("phone") ?? ""),
-        /* CRM sirf FullName/Email/Phone/Comment leta hai, is liye
-           chuna hua shoba Comment ke saath bhej rahe hain — warna
-           yeh maloomat kahin darj hi nahi hoti. */
-        comment:  [
-          `Enquiry about: ${String(data.get("area") ?? enquiryAreas[0])}`,
-          String(data.get("message") ?? "").trim(),
-        ]
-          .filter(Boolean)
-          .join("\n\n"),
+        comment:  String(data.get("message") ?? ""),
       });
       setSent(true);
     } catch {
@@ -152,22 +133,6 @@ export function Contact() {
                 <input name="email" type="email" required placeholder="Email *" className={inputClass} />
               </div>
               <input  name="phone" type="tel"  required placeholder="Phone *" className={`${inputClass} mt-5`} />
-              <select
-                name="area"
-                defaultValue={enquiryAreas[0]}
-                aria-label="What is your enquiry about?"
-                className={`${inputClass} mt-5 appearance-none bg-[length:1.1rem] bg-[right_1.25rem_center] bg-no-repeat pr-12`}
-                style={{
-                  backgroundImage:
-                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808f7d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-                }}
-              >
-                {enquiryAreas.map((area) => (
-                  <option key={area} value={area}>
-                    {area}
-                  </option>
-                ))}
-              </select>
               <textarea name="message" rows={5} placeholder="Message" className={`${inputClass} mt-5 resize-none`} />
               {error && (
                 <p className="mt-4 text-sm text-red-500">{error}</p>

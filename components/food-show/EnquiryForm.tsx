@@ -22,6 +22,7 @@ import {
   ALLOWED_ATTACHMENT_LABEL,
   ALLOWED_ATTACHMENT_TYPES,
   EMPTY_ENQUIRY,
+  ENQUIRY_AREAS,
   MAX_ATTACHMENT_BYTES,
   STEP_ONE_FIELDS,
   formatBytes,
@@ -439,6 +440,26 @@ export function EnquiryForm({
                 }}
               />
             </Field>
+
+            {/* Is par label jaan boojh kar nahi — baaki fields ke labels
+               waise hi rehte hain. Screen readers ke liye aria-label. */}
+            <select
+              name="area"
+              value={fields.area}
+              aria-label="What is your enquiry about?"
+              onChange={(e) => set("area", e.target.value)}
+              className={`${inputClass} appearance-none bg-[length:1.05rem] bg-[right_1rem_center] bg-no-repeat pr-11`}
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808f7d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+              }}
+            >
+              {ENQUIRY_AREAS.map((area) => (
+                <option key={area} value={area}>
+                  {area}
+                </option>
+              ))}
+            </select>
 
             <button
               type="button"
