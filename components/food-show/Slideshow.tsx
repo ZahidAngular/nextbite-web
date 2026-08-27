@@ -117,22 +117,33 @@ function BrandSlide({ slide }: { slide: Extract<Slide, { kind: "brand" }> }) {
 
   return (
     <div className="mx-auto flex h-full max-w-6xl flex-col justify-center px-8">
-      <motion.span
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 0.16, x: 0 }}
-        transition={{ duration: 0.6 }}
-        className="font-display-black text-[clamp(4rem,14vw,11rem)] leading-none select-none"
-        style={{ color: brand.color }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </motion.span>
-
+      {/* Digit aur logo ek hi qatar mein, panel dayen taraf */}
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.6 }}
-        className="-mt-[0.35em]"
+        transition={{ duration: 0.6 }}
+        className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4"
       >
+        <div className="flex items-center gap-5">
+          <span
+            className="font-display-black text-[clamp(3rem,10vw,7rem)] leading-none opacity-[0.16] select-none"
+            style={{ color: brand.color }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          {brand.logo ? (
+            <>
+              <BrandLockup brand={brand} height={100} />
+              <h2 className="sr-only">{brand.name}</h2>
+            </>
+          ) : (
+            <h2 className="font-heading text-[clamp(2.2rem,7vw,5rem)] leading-[0.9] font-bold tracking-[-0.04em]">
+              {brand.name}
+            </h2>
+          )}
+        </div>
+
         <span
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-bold tracking-[0.16em] text-white uppercase sm:text-xs"
           style={{
@@ -142,25 +153,17 @@ function BrandSlide({ slide }: { slide: Extract<Slide, { kind: "brand" }> }) {
           <brand.icon size={14} />
           {brand.kicker}
         </span>
-
-        {brand.logo ? (
-          <>
-            <BrandLockup brand={brand} className="mt-6" height={64} />
-            <h2 className="sr-only">{brand.name}</h2>
-          </>
-        ) : (
-          <h2 className="font-heading mt-6 text-[clamp(2.6rem,9vw,7rem)] leading-[0.9] font-bold tracking-[-0.04em]">
-            {brand.name}
-          </h2>
-        )}
-
-        <p
-          className="mt-4 text-xl font-medium sm:text-3xl"
-          style={{ color: brand.color }}
-        >
-          {brand.tagline}
-        </p>
       </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15, duration: 0.6 }}
+        className="mt-5 text-xl font-medium sm:text-3xl"
+        style={{ color: brand.color }}
+      >
+        {brand.tagline}
+      </motion.p>
 
       <motion.p
         initial={{ opacity: 0, y: 24 }}
