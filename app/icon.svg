@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="NextBite">
+  <!--
+    NextBite favicon — ek patta jis mein se ek "bite" liya gaya hai.
+    Patta = plant-based, bite = NextBite. 16px par bhi pehchana jaye
+    is liye koi bareek tafseel nahi: bas do thos shaklein aur brand
+    ka orange-se-green gradient.
+  -->
+  <defs>
+    <linearGradient id="nb-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0910f" />
+      <stop offset="1" stop-color="#3a8a1a" />
+    </linearGradient>
+
+    <!-- patta safed, phir us mein se gol "bite" kaat di jati hai -->
+    <mask id="nb-bite">
+      <rect width="32" height="32" fill="#000" />
+      <path
+        d="M6.4 25.6C5.2 13.8 13.4 5.9 25.8 6.2c.6 12.2-7.4 20.3-19.4 19.4Z"
+        fill="#fff"
+      />
+      <!-- bite: patte ke upper-right kinare mein se gol tukra —
+           tip kaatne ke bajaye kinare se, taake saaf "bite" lage -->
+      <circle cx="26.2" cy="14.6" r="5.6" fill="#000" />
+    </mask>
+  </defs>
+
+  <rect width="32" height="32" rx="7.5" fill="url(#nb-bg)" />
+
+  <g mask="url(#nb-bite)">
+    <rect width="32" height="32" fill="#fff" />
+  </g>
+
+  <!-- patte ki nas — halki si, taake bara size mein jaan aa jaye -->
+  <path
+    d="M8.6 24C12 19 16.4 14.6 22 11.4"
+    fill="none"
+    stroke="#2f7016"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    opacity=".45"
+  />
+</svg>
