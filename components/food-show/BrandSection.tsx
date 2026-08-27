@@ -46,44 +46,45 @@ export function BrandSection({
       <div className="mx-auto max-w-7xl px-6">
         {/* ── brand header ─────────────────────────────────── */}
         <Reveal>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          {/* Yeh qatar poori chaurai leti hai — max-w-3xl ke andar hoti
+             to panel beech mein hi ruk jata, page ke kinare tak na jata */}
+          <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-4">
+            <div className="flex items-center gap-4">
+              <span
+                className="font-display-black text-5xl leading-none opacity-20 select-none sm:text-6xl"
+                style={{ color: brand.color }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              {brand.logo ? (
+                <>
+                  <BrandLockup brand={brand} height={84} />
+                  {/* naam screen readers aur SEO ke liye */}
+                  <h2 className="sr-only">{brand.name}</h2>
+                </>
+              ) : (
+                <h2 className="font-heading text-5xl font-bold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+                  {brand.name}
+                </h2>
+              )}
+            </div>
+
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] font-bold tracking-[0.16em] text-white uppercase sm:text-[11px]"
+              style={{
+                background: `linear-gradient(120deg, ${brand.color}, ${brand.color2})`,
+              }}
+            >
+              <brand.icon size={13} />
+              {brand.kicker}
+            </span>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              {/* Digit + logo bayen taraf, kicker panel dayen taraf */}
-              <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-4">
-                <div className="flex items-center gap-4">
-                  <span
-                    className="font-display-black text-5xl leading-none opacity-20 select-none sm:text-6xl"
-                    style={{ color: brand.color }}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  {brand.logo ? (
-                    <>
-                      <BrandLockup brand={brand} height={84} />
-                      {/* naam screen readers aur SEO ke liye */}
-                      <h2 className="sr-only">{brand.name}</h2>
-                    </>
-                  ) : (
-                    <h2 className="font-heading text-5xl font-bold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
-                      {brand.name}
-                    </h2>
-                  )}
-                </div>
-
-                <span
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] font-bold tracking-[0.16em] text-white uppercase sm:text-[11px]"
-                  style={{
-                    background: `linear-gradient(120deg, ${brand.color}, ${brand.color2})`,
-                  }}
-                >
-                  <brand.icon size={13} />
-                  {brand.kicker}
-                </span>
-              </div>
-
               <p
-                className="mt-3 text-xl font-medium sm:text-2xl"
+                className="text-xl font-medium sm:text-2xl"
                 style={{ color: brand.color }}
               >
                 {brand.tagline}
