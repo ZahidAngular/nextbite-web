@@ -24,7 +24,8 @@ export const metadata: Metadata = {
 };
 
 export default function EnquiryPage() {
-  const travis = DISTRIBUTION[0].contact;
+  /* dono raabte — Travis aur Atif */
+  const contacts = DISTRIBUTION.map((d) => d.contact);
 
   /* `relative` zaroori hai — warna neeche wala blur `main` ke
      overflow-hidden se bahar nikal kar page ko lamba kar deta hai */
@@ -58,6 +59,37 @@ export default function EnquiryPage() {
         </span>
       </header>
 
+      {/* ── raabta strip — sab se upar, number pehle phir email ── */}
+      <div className="shrink-0 px-5 pb-2 sm:px-8">
+        <div className="flex flex-col gap-1 rounded-2xl border border-line bg-card/60 px-3.5 py-2 backdrop-blur-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:px-4 sm:py-2.5">
+          <span className="hidden text-[10px] font-bold tracking-[0.16em] text-muted uppercase sm:inline">
+            Prefer to reach us directly?
+          </span>
+
+          {contacts.map((c) => (
+            <span
+              key={c.email}
+              className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11.5px] sm:text-[13px]"
+            >
+              <a
+                href={`tel:${c.phones[0].replace(/\s/g, "")}`}
+                className="inline-flex items-center gap-1.5 font-medium text-muted transition-colors hover:text-secondary"
+              >
+                <Phone size={13} className="shrink-0 text-secondary" />
+                {c.phones[0]}
+              </a>
+              <a
+                href={`mailto:${c.email}`}
+                className="inline-flex items-center gap-1.5 font-medium text-muted transition-colors hover:text-primary"
+              >
+                <Mail size={13} className="shrink-0 text-primary" />
+                {c.email}
+              </a>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ── body ────────────────────────────────────────────── */}
       <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 px-5 pb-3 sm:px-8 lg:flex-row lg:items-center lg:gap-14 lg:px-12">
         {/* left — desktop par tafseel, mobile par sirf chhota title */}
@@ -71,30 +103,6 @@ export default function EnquiryPage() {
             like us to know — retail listings, wholesale supply or foodservice
             bulk sizes.
           </p>
-
-          {/* raabta — sirf desktop par yahan, mobile par footer mein */}
-          <div className="mt-7 hidden flex-col gap-2.5 lg:flex">
-            <p className="text-[11px] font-bold tracking-[0.18em] text-muted uppercase">
-              Prefer to reach us directly?
-            </p>
-            <a
-              href={`mailto:${travis.email}`}
-              className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-primary"
-            >
-              <Mail size={15} className="text-primary" />
-              {travis.email}
-            </a>
-            {travis.phones.map((p) => (
-              <a
-                key={p}
-                href={`tel:${p.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-secondary"
-              >
-                <Phone size={15} className="text-secondary" />
-                {p}
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* form */}
@@ -105,24 +113,7 @@ export default function EnquiryPage() {
 
       {/* ── footer — mobile par raabta yahin ────────────────── */}
       <footer className="shrink-0 px-5 pb-3 text-center sm:pb-4">
-        <div className="flex items-center justify-center gap-4 lg:hidden">
-          <a
-            href={`mailto:${travis.email}`}
-            className="inline-flex items-center gap-1.5 text-[11px] font-medium text-muted transition-colors hover:text-primary"
-          >
-            <Mail size={12} className="text-primary" />
-            {travis.email}
-          </a>
-          <a
-            href={`tel:${travis.phones[0].replace(/\s/g, "")}`}
-            className="inline-flex items-center gap-1.5 text-[11px] font-medium text-muted transition-colors hover:text-secondary"
-          >
-            <Phone size={12} className="text-secondary" />
-            {travis.phones[0]}
-          </a>
-        </div>
-
-        <p className="mt-2 hidden text-[10px] text-muted lg:block">
+        <p className="hidden text-[10px] text-muted lg:block">
           NextBite · angelfood.co.nz · nuttybay.com.au · tonzu.co.nz ·
           zenzo.co.nz
         </p>
