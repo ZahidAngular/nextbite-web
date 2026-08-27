@@ -576,7 +576,7 @@ export const BRANDS: Brand[] = [
         phones: ["0430 952 494"],
       },
     ],
-    sites: ["tonzu.co.nz", "chalmersorganics.co.nz", "nextbite.com.au"],
+    sites: ["chalmersorganics.co.nz", "tonzu.co.nz", "nextbite.com.au"],
     note: "Foodservice packs available — contact to discuss bulk supply for catering and retail.",
   },
 
@@ -746,13 +746,32 @@ export const DISTRIBUTION: {
 
 export const ALL_SITES = [
   "angelfood.co.nz",
-  "tonzu.co.nz",
   "chalmersorganics.co.nz",
+  "tonzu.co.nz",
   "zenzo.co.nz",
   "nuttybay.com.au",
   "nextbite.com.au",
   "smartshelf.co.nz",
 ];
+
+/* ─────────────────────────── LINKS ─────────────────────────── */
+
+/**
+ * Site ka naam wohi rehta hai jo dikhta hai, par kuch domains kahin
+ * aur khulte hain.
+ *
+ * tonzu.co.nz abhi jawab hi nahi deta — Tonzu ka asal site
+ * chalmersorganics.co.nz par hai. Is liye label "tonzu.co.nz"
+ * rehne diya, magar click wahan bhejta hai jahan safha maujood hai,
+ * warna har click ek mari hui link par jata.
+ */
+const SITE_HREFS: Record<string, string> = {
+  "tonzu.co.nz": "https://chalmersorganics.co.nz/",
+};
+
+export function siteHref(site: string) {
+  return SITE_HREFS[site] ?? `https://${site}`;
+}
 
 /* ─────────────────────────── DERIVED ─────────────────────────── */
 

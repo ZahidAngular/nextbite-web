@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { BrandLockup } from "./BrandLogo";
 import { ProductCard } from "./ProductCard";
 import type { Brand, TempFilter } from "./data";
-import { brandProductCount } from "./data";
+import { brandProductCount, siteHref } from "./data";
 
 export function BrandSection({
   brand,
@@ -232,7 +232,7 @@ export function BrandSection({
                   {brand.sites.map((site) => (
                     <a
                       key={site}
-                      href={`https://${site}`}
+                      href={siteHref(site)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-xs font-medium transition-colors hover:text-primary"

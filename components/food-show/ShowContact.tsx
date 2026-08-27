@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { Reveal } from "@/components/Reveal";
-import { ALL_SITES, DISTRIBUTION, SHOW } from "./data";
+import { ALL_SITES, DISTRIBUTION, SHOW, siteHref } from "./data";
 
 export function ShowContact({
   onPlay,
@@ -209,7 +209,7 @@ export function ShowContact({
             {ALL_SITES.map((site) => (
               <a
                 key={site}
-                href={`https://${site}`}
+                href={siteHref(site)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-4 py-2 text-xs font-medium transition-colors hover:border-primary hover:text-primary"
