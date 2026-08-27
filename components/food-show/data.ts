@@ -26,9 +26,9 @@ import {
      1. file ko  public/food-show/<brand>/  mein daalo
      2. us product par likho →  image: "/food-show/angel-food/cheddar-block.webp"
 
-   Abhi tasveer ke baghair: 4 Angel Food pizzas, Tonzu ke Ginger & Honey Tofu
-   aur Herb Tofu Nuggets, aur Zenzo ke chaaron products (zenzo.co.nz ka TLS
-   certificate 11 June 2026 ko expire ho chuka hai).
+   Abhi tasveer ke baghair sirf 4 Angel Food pizzas hain — baqi sab products
+   ke paas pack shots maujood hain. (Ginger & Honey Tofu ab Zenzo brand ke
+   under hai — pack label Zenzo ka hai, is liye move kiya gaya.)
    ═══════════════════════════════════════════════════════════════ */
 
 export const SHOW = {
@@ -99,7 +99,7 @@ export const BRANDS: Brand[] = [
   {
     slug: "angel-food",
     name: "Angel Food",
-    kicker: "Aotearoa's plant-based pioneer since 2006",
+    kicker: "Plant-based pioneer since 2006",
     since: "2006",
     origin: "New Zealand",
     tagline: "Your favourite foods, plant-based.",
@@ -122,7 +122,7 @@ export const BRANDS: Brand[] = [
             name: "Cheddar Block",
             size: "350g",
             temp: "CHILLED",
-            desc: "Classic block-in-a-tub for sandwiches, toasties and cheese boards.",
+            desc: "Classic block for sandwiches, toasties and cheese boards.",
             image: "/food-show/angel-food/cheddar-block.webp",
           },
           {
@@ -269,29 +269,29 @@ export const BRANDS: Brand[] = [
           {
             name: "Veg Trio",
             temp: "FROZEN",
-            desc: "Tomato base, 80g Angel Food cheese, 70g Orogel grilled zucchini, eggplant and capsicum; EVOO.",
+            desc: "Tomato base, Angel Food cheese, Orogel grilled zucchini, eggplant and capsicum; EVOO.",
           },
           {
             name: "Pizza Parmigiana",
             temp: "FROZEN",
-            desc: "Tomato base, 80g Angel Food cheese, 120g Orogel eggplant, tomato sauce, EVOO and Angel Food Parmesan.",
+            desc: "Tomato base, Angel Food cheese, Orogel eggplant, tomato sauce, EVOO and Angel Food Parmesan.",
           },
           {
             name: "Mediterranean",
             temp: "FROZEN",
-            desc: "Tomato base, 80g Angel Food cheese, 40g Orogel Veg Trio, 30g caponata vegetables, EVOO and oregano.",
+            desc: "Tomato base, Angel Food cheese, Orogel Veg Trio, caponata vegetables, EVOO and oregano.",
           },
           {
             name: "Mediterranean 2",
             temp: "FROZEN",
-            desc: "Tomato base, 80g Angel Food cheese, 50g Orogel Veg Trio, 20g pitted Kalamata olives, EVOO and oregano.",
+            desc: "Tomato base, Angel Food cheese, Orogel Veg Trio, pitted Kalamata olives, EVOO and oregano.",
           },
         ],
       },
     ],
     contacts: [
       {
-        name: "Travis",
+        name: "Travis Carruthers",
         role: "Australia contact",
         email: "travis@nextbite.com.au",
         phones: ["0430 952 494"],
@@ -407,7 +407,7 @@ export const BRANDS: Brand[] = [
         phones: ["+61 481 317 161"],
       },
       {
-        name: "Travis",
+        name: "Travis Carruthers",
         role: "Australia contact",
         email: "travis@nextbite.com.au",
         phones: ["0430 952 494"],
@@ -448,11 +448,25 @@ export const BRANDS: Brand[] = [
             image: "/food-show/tonzu/traditional-tofu.webp",
           },
           {
-            name: "Ginger & Honey Tofu",
-            size: "375g",
+            name: "Tofu Double Pack",
+            size: "600g",
             temp: "CHILLED",
-            desc: "Marinated tofu with a zesty ginger-and-honey glaze.",
-            image: "/food-show/tonzu/ginger-and-honey.webp",
+            desc: "Budget-friendly value pack of the original organic tofu.",
+            image: "/food-show/tonzu/tofu-double.webp",
+          },
+          {
+            name: "Firm Tofu",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Firmer take on the original tofu, made with the same traditional methods and gut-friendly nigari.",
+            image: "/food-show/tonzu/tofu-firm.webp",
+          },
+          {
+            name: "Firm Tofu Double Pack",
+            size: "600g",
+            temp: "CHILLED",
+            desc: "Great-value double pack of the firm organic tofu.",
+            image: "/food-show/tonzu/firm-double-pack.webp",
           },
           {
             name: "Teriyaki Tofu Cubes",
@@ -460,6 +474,20 @@ export const BRANDS: Brand[] = [
             temp: "CHILLED",
             desc: "Pre-cut organic tofu cubes in teriyaki marinade.",
             image: "/food-show/tonzu/teriyaki-tofu-cubes.webp",
+          },
+          {
+            name: "Hoisin Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Ready-marinated organic tofu cubes in hoisin sauce — a quick and easy meal in moments.",
+            image: "/food-show/tonzu/hoisin-cubes.webp",
+          },
+          {
+            name: "Sweet & Sour Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Pre-cut cubes in a tangy sweet-and-sour marinade, ready for the pan.",
+            image: "/food-show/tonzu/sweet-sour-cubes.webp",
           },
           {
             name: "Herb Tofu Nuggets",
@@ -485,12 +513,19 @@ export const BRANDS: Brand[] = [
             desc: "Traditionally fermented whole-soybean block rich in fibre and protein.",
             image: "/food-show/tonzu/organic-tempeh.webp",
           },
+          {
+            name: "BBQ Tempeh Strips",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Ready-to-cook tempeh strips in a smokey barbecue marinade — straight into the pan.",
+            image: "/food-show/tonzu/tempeh-strips.webp",
+          },
         ],
       },
       {
         id: "sausages-patties",
         title: "Sausages & Patties",
-        tagline: "Wholefood plants made easy.",
+        tagline: "Wholefood made easy.",
         blurb:
           "Convenient favourites built around Tonzu's longstanding expertise with soy and plant protein.",
         icon: Sandwich,
@@ -524,6 +559,13 @@ export const BRANDS: Brand[] = [
             image: "/food-show/tonzu/smokey-horopito.webp",
           },
           {
+            name: "Cheese & Onion Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Chunky plant sausages packed with melting vegan cheese — the first of its kind.",
+            image: "/food-show/tonzu/cheese-onion-sausage.webp",
+          },
+          {
             name: "Smokey BBQ Patties",
             size: "300g",
             temp: "CHILLED",
@@ -535,7 +577,7 @@ export const BRANDS: Brand[] = [
     ],
     contacts: [
       {
-        name: "Travis",
+        name: "Travis Carruthers",
         role: "Australia contact",
         email: "travis@nextbite.com.au",
         phones: ["0430 952 494"],
@@ -554,7 +596,7 @@ export const BRANDS: Brand[] = [
     origin: "New Zealand",
     tagline: "Pure, cultured plant goodness.",
     story:
-      "Zenzo creates beautifully simple dairy-free foods in New Zealand. At the heart of the range is naturally cultured coconut yoghurt — creamy, versatile and made with live vegan cultures — complemented by convenient plant-based pantry and foodservice favourites.",
+      "Zenzo creates beautifully simple dairy-free foods in New Zealand. At the heart of the range is naturally cultured coconut yoghurt — creamy, versatile and made with live vegan cultures — complemented by plant-based tofu, dairy-free mozzarella and convenient pantry favourites.",
     logo: "/brands/zenzo.webp",
     color: "#12897c",
     color2: "#4dbfae",
@@ -585,6 +627,46 @@ export const BRANDS: Brand[] = [
         ],
       },
       {
+        id: "plant-based-tofu",
+        title: "Plant-Based Tofu",
+        tagline: "Simple, versatile, ready for anything.",
+        blurb:
+          "Zenzo-branded tofu made in Aotearoa — plain firm style and ready-marinated favourites.",
+        icon: Bean,
+        products: [
+          {
+            name: "Firm Style Plain Tofu",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Cholesterol-free plant protein for frying, baking and scrambling.",
+            image: "/food-show/zenzo/zenzo-tofu.webp",
+          },
+          {
+            name: "Ginger & Honey Tofu",
+            size: "375g",
+            temp: "CHILLED",
+            desc: "Marinated tofu with a zesty ginger-and-honey glaze.",
+            image: "/food-show/zenzo/ginger-and-honey.webp",
+          },
+        ],
+      },
+      {
+        id: "dairy-free-cheese",
+        title: "Dairy-Free Cheese",
+        tagline: "Handcrafted cheese alternative.",
+        blurb: "100% New Zealand made and owned.",
+        icon: Milk,
+        products: [
+          {
+            name: "Mozzarella",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Handcrafted dairy-free mozzarella that melts beautifully on pizza and toasties.",
+            image: "/food-show/zenzo/mozzarella.webp",
+          },
+        ],
+      },
+      {
         id: "chefs-pantry-condiments",
         title: "Chef's Pantry Condiments",
         tagline: "Egg-free. Dairy-free. Kitchen-ready.",
@@ -610,7 +692,7 @@ export const BRANDS: Brand[] = [
     ],
     contacts: [
       {
-        name: "Travis",
+        name: "Travis Carruthers",
         role: "Australia contact",
         email: "travis@nextbite.com.au",
         phones: ["0430 952 494"],
@@ -640,7 +722,7 @@ export const STORAGE = [
     temp: "CHILLED" as Temp,
     label: "Keep Chilled",
     items:
-      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Tonzu tofu, tempeh, sausages and patties · Zenzo yoghurts and condiments",
+      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Tonzu tofu, tempeh, sausages and patties · Zenzo tofu, yoghurts, mozzarella and condiments",
   },
 ];
 
@@ -653,7 +735,7 @@ export const DISTRIBUTION: {
     title: "National & International Distribution",
     subtitle: "Distribution, wholesale and foodservice enquiries",
     contact: {
-      name: "Travis",
+      name: "Travis Carruthers",
       email: "travis@nextbite.com.au",
       phones: ["0430 952 494"],
     },
