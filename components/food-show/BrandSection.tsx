@@ -55,15 +55,6 @@ export function BrandSection({
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] font-bold tracking-[0.16em] text-white uppercase sm:text-[11px]"
-                  style={{
-                    background: `linear-gradient(120deg, ${brand.color}, ${brand.color2})`,
-                  }}
-                >
-                  <brand.icon size={13} />
-                  {brand.kicker}
-                </span>
               </div>
 
               {brand.logo ? (

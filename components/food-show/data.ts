@@ -489,13 +489,6 @@ export const BRANDS: Brand[] = [
             desc: "Pre-cut cubes in a tangy sweet-and-sour marinade, ready for the pan.",
             image: "/food-show/tonzu/sweet-sour-cubes.webp",
           },
-          {
-            name: "Herb Tofu Nuggets",
-            size: "200g",
-            temp: "CHILLED",
-            desc: "Seasoned wholefood tofu nuggets.",
-            image: "/food-show/tonzu/tofu-nuggets.webp",
-          },
         ],
       },
       {
