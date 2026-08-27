@@ -407,7 +407,7 @@ export const BRANDS: Brand[] = [
       {
         name: "Atif Sharjeel",
         role: "Orders & contact",
-        email: "info@nuttybay.com.au",
+        email: "atif@nextbite.com.au",
         phones: ["+61 481 317 161"],
       },
       {
