@@ -284,12 +284,6 @@ export const BRANDS: Brand[] = [
             desc: "Tomato base, Angel Food cheese, Orogel Veg Trio, caponata vegetables, EVOO and oregano.",
             image: "/food-show/angel-food/mediterranean.webp",
           },
-          {
-            name: "Mediterranean 2",
-            temp: "FROZEN",
-            desc: "Tomato base, Angel Food cheese, Orogel Veg Trio, pitted Kalamata olives, EVOO and oregano.",
-            image: "/food-show/angel-food/mediterranean-2.webp",
-          },
         ],
       },
     ],
