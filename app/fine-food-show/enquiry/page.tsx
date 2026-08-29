@@ -58,7 +58,7 @@ export default function EnquiryPage() {
       </header>
 
       {/* ── body ────────────────────────────────────────────── */}
-      <div className="flex min-h-0 flex-1 flex-col gap-6 px-5 pb-6 sm:px-8 lg:flex-row lg:items-center lg:gap-12 lg:px-12 lg:pb-3">
+      <div className="flex min-h-0 flex-1 flex-col gap-6 px-5 pb-6 sm:px-8 lg:flex-row lg:items-center lg:justify-center lg:gap-10 lg:px-10 xl:gap-14 lg:pb-3">
         {/* Tafseel: mobile par form ke NEECHE (order-2), desktop par
            bayen taraf (lg:order-1) */}
         <div className="order-2 shrink-0 lg:order-1 lg:max-w-xl">
@@ -150,7 +150,7 @@ export default function EnquiryPage() {
         </div>
 
         {/* form — mobile par sab se pehle */}
-        <div className="order-1 w-full max-w-lg self-center rounded-[1.5rem] border border-line bg-card p-5 shadow-card sm:rounded-[1.75rem] sm:p-7 lg:order-2 lg:ml-auto lg:mr-4 xl:mr-10">
+        <div className="order-1 w-full max-w-lg self-center rounded-[1.5rem] border border-line bg-card p-5 shadow-card sm:rounded-[1.75rem] sm:p-7 lg:order-2">
           <EnquiryForm source="qr-page" compact />
         </div>
       </div>
