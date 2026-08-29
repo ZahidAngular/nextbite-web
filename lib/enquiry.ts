@@ -25,24 +25,10 @@ export const ALLOWED_ATTACHMENT_TYPES = [
 
 export const ALLOWED_ATTACHMENT_LABEL = "PDF, Word, Excel, CSV or image";
 
-/** Enquiry kis shobe ke bare mein hai — form ka dropdown. */
-export const ENQUIRY_AREAS = [
-  "NextBite",
-  "Smart Shelf",
-  "Stock checker",
-  "IT Services",
-  "Food and Distribution",
-  "Partnerships",
-] as const;
-
-export type EnquiryArea = (typeof ENQUIRY_AREAS)[number];
-
 export type EnquiryFields = {
   name: string;
   email: string;
   phone: string;
-  /** dropdown — khali kabhi nahi hota, default pehla option */
-  area: string;
   company: string;
   message: string;
 };
@@ -51,7 +37,6 @@ export const EMPTY_ENQUIRY: EnquiryFields = {
   name: "",
   email: "",
   phone: "",
-  area: ENQUIRY_AREAS[0],
   company: "",
   message: "",
 };
@@ -59,7 +44,7 @@ export const EMPTY_ENQUIRY: EnquiryFields = {
 export type FieldErrors = Partial<Record<keyof EnquiryFields | "attachment", string>>;
 
 /** step 1 ke fields — inhi par "Save & next" rukta hai */
-export const STEP_ONE_FIELDS = ["name", "email", "phone", "area"] as const;
+export const STEP_ONE_FIELDS = ["name", "email", "phone"] as const;
 
 /* thoda sa loose email check — RFC-perfect hona zaroori nahi,
    asal tasdeeq to reply hi karti hai */
@@ -101,13 +86,6 @@ export function validateField(
       if (digits.length > 20) return "That number looks too long.";
       return;
     }
-
-    case "area":
-      if (!v) return "Please choose what this is about.";
-      if (!(ENQUIRY_AREAS as readonly string[]).includes(v)) {
-        return "Please choose one of the listed options.";
-      }
-      return;
 
     case "company":
       if (v.length > 120) return "Please keep this under 120 characters.";

@@ -112,7 +112,6 @@ export async function POST(request: Request) {
     name: str(form.get("name")),
     email: str(form.get("email")),
     phone: str(form.get("phone")),
-    area: str(form.get("area")),
     company: str(form.get("company")),
     message: str(form.get("message")),
   };

@@ -717,6 +717,87 @@ export const STORAGE = [
   },
 ];
 
+/* ─────────────────────────── ENQUIRY CONTACTS ───────────────────────────
+   Enquiry page par shobe ke hisaab se raabta. Ek shobe mein ek se
+   zyada log ho sakte hain.
+   ──────────────────────────────────────────────────────────────────── */
+
+export type EnquiryContactPerson = {
+  name: string;
+  phones: string[];
+  email: string;
+};
+
+export type EnquiryContactGroup = {
+  area: string;
+  /** card ka accent — orange se green tak, tarteeb ke saath */
+  accent: string;
+  people: EnquiryContactPerson[];
+};
+
+export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
+  {
+    area: "Acquisition & Partnerships",
+    accent: "#e07c0a",
+    people: [
+      {
+        name: "Dion Campbell",
+        phones: ["+61 473 236 105"],
+        email: "dion@nextbite.com.au",
+      },
+    ],
+  },
+  {
+    area: "Branding | International Partnership",
+    accent: "#c68410",
+    people: [
+      {
+        name: "Atif Sharjeel",
+        phones: ["+61 481 317 161", "+65 8133 1443"],
+        email: "atif@nextbite.com.au",
+      },
+    ],
+  },
+  {
+    area: "Smart Shelf | Stock Checker",
+    accent: "#a38d16",
+    people: [
+      {
+        name: "Shaikh Siddiqui",
+        phones: ["+61 430 496 430"],
+        email: "shaikh@nextbite.com.au",
+      },
+    ],
+  },
+  {
+    area: "Food and Distribution",
+    accent: "#71891b",
+    people: [
+      {
+        name: "Travis Carruthers",
+        phones: ["+61 430 952 494"],
+        email: "travis@nextbite.com.au",
+      },
+    ],
+  },
+  {
+    area: "Media Marketing & IT Services",
+    accent: "#3a8a1a",
+    people: [
+      {
+        name: "Shaikh Siddiqui",
+        phones: ["+61 430 496 430"],
+        email: "shaikh@nextbite.com.au",
+      },
+      {
+        name: "Atif Sharjeel",
+        phones: ["+61 481 317 161", "+65 8133 1443"],
+        email: "atif@nextbite.com.au",
+      },
+    ],
+  },
+];
+
 export const DISTRIBUTION: {
   title: string;
   subtitle: string;

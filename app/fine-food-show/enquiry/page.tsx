@@ -3,18 +3,18 @@ import Link from "next/link";
 import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { EnquiryForm } from "@/components/food-show/EnquiryForm";
-import { DISTRIBUTION, SHOW } from "@/components/food-show/data";
+import { ENQUIRY_CONTACTS, SHOW } from "@/components/food-show/data";
 
 /* ═══════════════════════════════════════════════════════════════
    QR scan karne wale seedha yahan aate hain.
 
-   Yeh page JAAN BOOJH KAR ek hi screen mein samata hai — koi
-   scrolling nahi. Is liye:
-     • bahar wala main `h-[100dvh] overflow-hidden` hai
-     • desktop par do column (baayen taraf baat, daayen form)
-     • mobile par sirf zaroori cheezein — lambi tafseel chhup jati hai
-   Kuch bhi add karne se pehle 360x640 par check kar lena, warna
-   overflow-hidden usay kaat dega.
+   Chhoti screen par: form pehle, tafseel uske BAAD — taake khola
+   jate hi form saamne ho. Raabte ki list ab lambi hai, is liye
+   mobile par safha barh sakta hai (pehle jaisa overflow-hidden
+   rakhte to yeh saari tafseel kat kar ghayab ho jati).
+
+   Bare screen (lg) par: do column, aur poora safha ek hi screen
+   mein — wahan jagah kaafi hai.
    ═══════════════════════════════════════════════════════════════ */
 
 export const metadata: Metadata = {
@@ -24,23 +24,21 @@ export const metadata: Metadata = {
 };
 
 export default function EnquiryPage() {
-  /* Atif pehle, phir Travis — DISTRIBUTION mein tarteeb ulti hai */
-  const contacts = [...DISTRIBUTION].reverse().map((d) => d.contact);
-
-  /* `relative` zaroori hai — warna neeche wala blur `main` ke
-     overflow-hidden se bahar nikal kar page ko lamba kar deta hai */
   return (
-    <main className="relative flex h-[100dvh] flex-col overflow-hidden">
-      {/* ambient wash */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+    <main className="relative flex min-h-[100dvh] flex-col lg:h-[100dvh] lg:overflow-hidden">
+      {/* Ambient wash. `overflow-hidden` yahin par zaroori hai — mobile
+         par main ab overflow-hidden nahi hai, to yeh blur bahar nikal
+         kar safhe ko dayen aur neeche khinch deta tha. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
         <div className="absolute -top-40 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-[var(--glow-primary)] blur-[120px]" />
         <div className="absolute -right-32 -bottom-40 h-[22rem] w-[22rem] rounded-full bg-[var(--glow-secondary)] blur-[120px]" />
       </div>
 
       {/* ── top bar ─────────────────────────────────────────── */}
       <header className="flex shrink-0 items-center justify-between gap-3 px-5 py-3 sm:px-8 sm:py-4">
-        {/* Logo khud hi wapas jane ka rasta hai — ek hi qatar mein
-            rehta hai taake page ki unchai na barhe */}
         <Link
           href="/fine-food-show"
           aria-label="Back to the Fine Food Show portfolio"
@@ -60,65 +58,102 @@ export default function EnquiryPage() {
       </header>
 
       {/* ── body ────────────────────────────────────────────── */}
-      <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 px-5 pb-3 sm:px-8 lg:flex-row lg:items-center lg:gap-14 lg:px-12">
-        {/* left — desktop par tafseel, mobile par sirf chhota title */}
-        <div className="shrink-0 lg:max-w-sm">
-          <h1 className="text-[clamp(1.5rem,6vw,3rem)] leading-[1.05]">
+      <div className="flex min-h-0 flex-1 flex-col gap-6 px-5 pb-6 sm:px-8 lg:flex-row lg:items-center lg:gap-12 lg:px-12 lg:pb-3">
+        {/* Tafseel: mobile par form ke NEECHE (order-2), desktop par
+           bayen taraf (lg:order-1) */}
+        <div className="order-2 shrink-0 lg:order-1 lg:max-w-xl">
+          <h1 className="text-[clamp(1.5rem,6vw,2.6rem)] leading-[1.05]">
             Fine Food Show <span className="text-gradient">Enquiry</span>
           </h1>
 
-          <p className="mt-3 hidden text-[15px] leading-relaxed text-muted sm:block">
+          <p className="mt-3 hidden text-[15px] leading-relaxed text-muted sm:block lg:text-sm">
             Two quick steps. Tell us how to reach you, then anything you&apos;d
-            like us to know — retail listings, wholesale supply or foodservice
-            bulk sizes.
+            like us to know.
           </p>
 
-          {/* raabta — heading ke neeche, har shakhs apni qatar mein:
-             pehle number, phir email */}
-          <div className="mt-4 flex flex-col gap-1 sm:mt-6 sm:gap-2">
-            {/* chhoti screen par yeh label jagah khaata hai —
-               icons se maqsad waise hi saaf hai */}
-            <p className="hidden text-[10px] font-bold tracking-[0.16em] text-muted uppercase sm:block">
+          {/* ── shobe ke hisaab se raabta ──────────────────────
+             Har shoba apna card, apne accent ke saath — orange se
+             green tak. Pehle yeh ek flat list thi jahan sab kuch ek
+             hi wazan ka tha aur naam kat rahe the. */}
+          <div className="mt-5 lg:mt-7">
+            <p className="mb-3 flex items-center gap-3 text-[10px] font-bold tracking-[0.16em] text-muted uppercase">
               Prefer to reach us directly?
+              <span className="h-px flex-1 bg-line" />
             </p>
 
-            {contacts.map((c) => (
-              <span
-                key={c.email}
-                className="flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[12px] sm:text-[13px]"
-              >
-                <a
-                  href={`tel:${c.phones[0].replace(/\s/g, "")}`}
-                  className="inline-flex items-center gap-1.5 font-medium text-muted transition-colors hover:text-secondary"
-                >
-                  <Phone size={13} className="shrink-0 text-secondary" />
-                  {c.phones[0]}
-                </a>
-                <a
-                  href={`mailto:${c.email}`}
-                  className="inline-flex items-center gap-1.5 font-medium text-muted transition-colors hover:text-primary"
-                >
-                  <Mail size={13} className="shrink-0 text-primary" />
-                  {c.email}
-                </a>
-              </span>
-            ))}
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              {ENQUIRY_CONTACTS.map((group) => {
+                /* do logon wala card poori chaurai le — warna grid
+                   mein ek taraf khali jagah reh jati hai */
+                const wide = group.people.length > 1;
+
+                return (
+                  <div
+                    key={group.area}
+                    className={`group relative overflow-hidden rounded-xl border border-line bg-card/70 py-2.5 pr-3 pl-4 backdrop-blur-sm transition-colors hover:border-transparent ${
+                      wide ? "sm:col-span-2" : ""
+                    }`}
+                  >
+                    {/* accent — bayen kinare par patli lakeer */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-y-0 left-0 w-[3px]"
+                      style={{ background: group.accent }}
+                    />
+
+                    <p
+                      className="text-[10px] leading-tight font-bold tracking-[0.1em] uppercase"
+                      style={{ color: group.accent }}
+                    >
+                      {group.area}
+                    </p>
+
+                    <div
+                      className={
+                        wide ? "mt-1.5 grid gap-x-5 gap-y-2 sm:grid-cols-2" : "mt-1.5"
+                      }
+                    >
+                      {group.people.map((person) => (
+                        <div key={`${group.area}-${person.email}`}>
+                          <p className="text-[13px] leading-snug font-semibold">
+                            {person.name}
+                          </p>
+
+                          <div className="mt-1 flex flex-col gap-1 text-[11.5px] leading-none">
+                            <a
+                              href={`mailto:${person.email}`}
+                              className="inline-flex min-w-0 items-center gap-1.5 text-muted transition-colors hover:text-foreground"
+                            >
+                              <Mail size={11} className="shrink-0 opacity-60" />
+                              <span className="truncate">{person.email}</span>
+                            </a>
+
+                            {person.phones.map((phone) => (
+                              <a
+                                key={phone}
+                                href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                                className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-foreground"
+                              >
+                                <Phone size={11} className="shrink-0 opacity-60" />
+                                {phone}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* form */}
-        <div className="w-full max-w-lg rounded-[1.5rem] border border-line bg-card p-5 shadow-card sm:rounded-[1.75rem] sm:p-7">
+        {/* form — mobile par sab se pehle */}
+        <div className="order-1 w-full max-w-lg self-center rounded-[1.5rem] border border-line bg-card p-5 shadow-card sm:rounded-[1.75rem] sm:p-7 lg:order-2 lg:ml-auto lg:mr-4 xl:mr-10">
           <EnquiryForm source="qr-page" compact />
         </div>
       </div>
-
-      {/* ── footer — mobile par raabta yahin ────────────────── */}
-      <footer className="shrink-0 px-5 pb-3 text-center sm:pb-4">
-        <p className="hidden text-[10px] text-muted lg:block">
-          NextBite · angelfood.co.nz · nuttybay.com.au · tonzu.co.nz ·
-          zenzo.co.nz
-        </p>
-      </footer>
     </main>
   );
 }
