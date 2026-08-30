@@ -730,48 +730,19 @@ export type EnquiryContactPerson = {
 
 export type EnquiryContactGroup = {
   area: string;
-  /** card ka accent — orange se green tak, tarteeb ke saath */
+  /** card ka accent */
   accent: string;
+  /** pehli qatar mein akela, bare naap ke saath */
+  featured?: boolean;
   people: EnquiryContactPerson[];
 };
 
 export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
   {
-    area: "Acquisition & Partnerships",
-    accent: "#e07c0a",
-    people: [
-      {
-        name: "Dion Campbell",
-        phones: ["+61 473 236 105"],
-        email: "dion@nextbite.com.au",
-      },
-    ],
-  },
-  {
-    area: "Branding | International Partnership",
-    accent: "#c68410",
-    people: [
-      {
-        name: "Atif Sharjeel",
-        phones: ["+61 481 317 161", "+65 8133 1443"],
-        email: "atif@nextbite.com.au",
-      },
-    ],
-  },
-  {
-    area: "Smart Shelf | Stock Checker",
-    accent: "#a38d16",
-    people: [
-      {
-        name: "Shaikh Siddiqui",
-        phones: ["+61 430 496 430"],
-        email: "shaikh@nextbite.com.au",
-      },
-    ],
-  },
-  {
-    area: "Food and Distribution",
-    accent: "#71891b",
+    area: "Food service and distribution",
+    accent: "#3a8a1a",
+    /* pehli qatar mein akela aur numaya */
+    featured: true,
     people: [
       {
         name: "Travis Carruthers",
@@ -781,18 +752,24 @@ export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
     ],
   },
   {
-    area: "Media Marketing & IT Services",
-    accent: "#3a8a1a",
+    area: "International branding and partnership",
+    accent: "#e07c0a",
+    people: [
+      {
+        name: "Atif Sharjeel",
+        phones: ["+61 481 317 161", "+65 8133 1443"],
+        email: "atif@nextbite.com.au",
+      },
+    ],
+  },
+  {
+    area: "Smartshelf and IT services",
+    accent: "#c68410",
     people: [
       {
         name: "Shaikh Siddiqui",
         phones: ["+61 430 496 430"],
         email: "shaikh@nextbite.com.au",
-      },
-      {
-        name: "Atif Sharjeel",
-        phones: ["+61 481 317 161", "+65 8133 1443"],
-        email: "atif@nextbite.com.au",
       },
     ],
   },

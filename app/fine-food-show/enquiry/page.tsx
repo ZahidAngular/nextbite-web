@@ -83,48 +83,71 @@ export default function EnquiryPage() {
 
             <div className="grid gap-2.5 sm:grid-cols-2">
               {ENQUIRY_CONTACTS.map((group) => {
-                /* do logon wala card poori chaurai le — warna grid
-                   mein ek taraf khali jagah reh jati hai */
-                const wide = group.people.length > 1;
+                /* featured card apni qatar akela leta hai aur har
+                   cheez us mein thori bari hoti hai */
+                const big = group.featured;
 
                 return (
                   <div
                     key={group.area}
-                    className={`group relative overflow-hidden rounded-xl border border-line bg-card/70 py-2.5 pr-3 pl-4 backdrop-blur-sm transition-colors hover:border-transparent ${
-                      wide ? "sm:col-span-2" : ""
+                    className={`relative overflow-hidden rounded-xl border backdrop-blur-sm ${
+                      big
+                        ? "border-transparent px-5 py-4 sm:col-span-2"
+                        : "border-line bg-card/70 py-2.5 pr-3 pl-4"
                     }`}
+                    style={
+                      big
+                        ? {
+                            background: `linear-gradient(110deg, ${group.accent}1f, ${group.accent}08)`,
+                            boxShadow: `inset 0 0 0 1px ${group.accent}40`,
+                          }
+                        : undefined
+                    }
                   >
-                    {/* accent — bayen kinare par patli lakeer */}
+                    {/* accent — bayen kinare par lakeer */}
                     <span
                       aria-hidden
-                      className="absolute inset-y-0 left-0 w-[3px]"
+                      className={`absolute inset-y-0 left-0 ${big ? "w-1" : "w-[3px]"}`}
                       style={{ background: group.accent }}
                     />
 
                     <p
-                      className="text-[10px] leading-tight font-bold tracking-[0.1em] uppercase"
+                      className={`leading-tight font-bold uppercase ${
+                        big
+                          ? "text-[12px] tracking-[0.14em]"
+                          : "text-[10px] tracking-[0.1em]"
+                      }`}
                       style={{ color: group.accent }}
                     >
                       {group.area}
                     </p>
 
-                    <div
-                      className={
-                        wide ? "mt-1.5 grid gap-x-5 gap-y-2 sm:grid-cols-2" : "mt-1.5"
-                      }
-                    >
+                    <div className="mt-1.5">
                       {group.people.map((person) => (
                         <div key={`${group.area}-${person.email}`}>
-                          <p className="text-[13px] leading-snug font-semibold">
+                          <p
+                            className={`leading-snug font-bold ${
+                              big ? "text-[17px]" : "text-[13px] font-semibold"
+                            }`}
+                          >
                             {person.name}
                           </p>
 
-                          <div className="mt-1 flex flex-col gap-1 text-[11.5px] leading-none">
+                          <div
+                            className={`mt-1 flex leading-none ${
+                              big
+                                ? "flex-wrap items-center gap-x-5 gap-y-1.5 text-[13px]"
+                                : "flex-col gap-1 text-[11.5px]"
+                            }`}
+                          >
                             <a
                               href={`mailto:${person.email}`}
                               className="inline-flex min-w-0 items-center gap-1.5 text-muted transition-colors hover:text-foreground"
                             >
-                              <Mail size={11} className="shrink-0 opacity-60" />
+                              <Mail
+                                size={big ? 13 : 11}
+                                className="shrink-0 opacity-60"
+                              />
                               <span className="truncate">{person.email}</span>
                             </a>
 
@@ -134,7 +157,10 @@ export default function EnquiryPage() {
                                 href={`tel:${phone.replace(/[^\d+]/g, "")}`}
                                 className="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-foreground"
                               >
-                                <Phone size={11} className="shrink-0 opacity-60" />
+                                <Phone
+                                  size={big ? 13 : 11}
+                                  className="shrink-0 opacity-60"
+                                />
                                 {phone}
                               </a>
                             ))}
