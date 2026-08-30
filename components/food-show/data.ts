@@ -95,6 +95,169 @@ export type Brand = {
 };
 
 export const BRANDS: Brand[] = [
+   /* ───────────────────────────── TONZU ───────────────────────────── */
+  {
+    slug: "tonzu",
+    name: "Tonzu",
+    kicker: "Organic wholefoods, family made since 1979",
+    since: "1979",
+    origin: "New Zealand",
+    tagline: "Plants. Tradition. Simplicity.",
+    story:
+      "Born from the Chalmers family's belief in the power of wholefoods, Tonzu has been making plant-based food in New Zealand since 1979. From traditionally crafted organic tofu and fermented tempeh to sausages, patties and marinated tofu, Tonzu brings together simple ingredients, plant protein and more than four decades of food-making experience.",
+    logo: "/brands/tonzu.webp",
+    color: "#3a8a1a",
+    color2: "#78c04a",
+    icon: Sprout,
+    categories: [
+      {
+        id: "organic-tofu",
+        title: "Organic Tofu",
+        tagline: "The heart of Tonzu.",
+        blurb:
+          "Traditionally made certified-organic tofu for stir-fries, curries, grilling and baking.",
+        icon: Bean,
+        products: [
+          {
+            name: "Traditional Tofu",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Handcrafted organic tofu made with Japanese stoneground activated beans.",
+            image: "/food-show/tonzu/traditional-tofu.webp",
+          },
+          {
+            name: "Tofu Double Pack",
+            size: "600g",
+            temp: "CHILLED",
+            desc: "Budget-friendly value pack of the original organic tofu.",
+            image: "/food-show/tonzu/tofu-double.webp",
+          },
+          {
+            name: "Firm Tofu",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Firmer take on the original tofu, made with the same traditional methods and gut-friendly nigari.",
+            image: "/food-show/tonzu/tofu-firm.webp",
+          },
+          {
+            name: "Firm Tofu Double Pack",
+            size: "600g",
+            temp: "CHILLED",
+            desc: "Great-value double pack of the firm organic tofu.",
+            image: "/food-show/tonzu/firm-double-pack.webp",
+          },
+          {
+            name: "Teriyaki Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Pre-cut organic tofu cubes in teriyaki marinade.",
+            image: "/food-show/tonzu/teriyaki-tofu-cubes.webp",
+          },
+          {
+            name: "Hoisin Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Ready-marinated organic tofu cubes in hoisin sauce — a quick and easy meal in moments.",
+            image: "/food-show/tonzu/hoisin-cubes.webp",
+          },
+          {
+            name: "Sweet & Sour Tofu Cubes",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Pre-cut cubes in a tangy sweet-and-sour marinade, ready for the pan.",
+            image: "/food-show/tonzu/sweet-sour-cubes.webp",
+          },
+        ],
+      },
+      {
+        id: "fermented-tempeh",
+        title: "Fermented Tempeh",
+        tagline: "Whole soybeans. Naturally fermented.",
+        blurb:
+          "A satisfying wholefood plant protein with characteristic texture and flavour.",
+        icon: Salad,
+        products: [
+          {
+            name: "Organic Tempeh",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Traditionally fermented whole-soybean block rich in fibre and protein.",
+            image: "/food-show/tonzu/organic-tempeh.webp",
+          },
+          {
+            name: "BBQ Tempeh Strips",
+            size: "250g",
+            temp: "CHILLED",
+            desc: "Ready-to-cook tempeh strips in a smokey barbecue marinade — straight into the pan.",
+            image: "/food-show/tonzu/tempeh-strips.webp",
+          },
+        ],
+      },
+      {
+        id: "sausages-patties",
+        title: "Sausages & Patties",
+        tagline: "Wholefood made easy.",
+        blurb:
+          "Convenient favourites built around Tonzu's longstanding expertise with soy and plant protein.",
+        icon: Sandwich,
+        products: [
+          {
+            name: "Italian Herb Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Organic tofu sausages with Italian herbs.",
+            image: "/food-show/tonzu/italian-herb-sausages.webp",
+          },
+          {
+            name: "Garlic & Chilli Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Plant sausages with roasted garlic and chilli.",
+            image: "/food-show/tonzu/garlic-chilli-sausages.webp",
+          },
+          {
+            name: "Sage & Onion Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Wholefood sausages with sweet onion and sage.",
+            image: "/food-show/tonzu/sage-onion-sausages.webp",
+          },
+          {
+            name: "Smokey Horopito",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Smoky sausages with native NZ horopito pepper.",
+            image: "/food-show/tonzu/smokey-horopito.webp",
+          },
+          {
+            name: "Cheese & Onion Sausages",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Chunky plant sausages packed with melting vegan cheese — the first of its kind.",
+            image: "/food-show/tonzu/cheese-onion-sausage.webp",
+          },
+          {
+            name: "Smokey BBQ Patties",
+            size: "300g",
+            temp: "CHILLED",
+            desc: "Hearty patties with rich barbecue flavour.",
+            image: "/food-show/tonzu/smokey-bbq-patties.webp",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Travis Carruthers",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+    ],
+    sites: ["chalmersorganics.co.nz", "tonzu.co.nz", "nextbite.com.au"],
+    note: "Foodservice packs available — contact to discuss bulk supply for catering and retail.",
+  },
+  
   /* ─────────────────────────── ANGEL FOOD ─────────────────────────── */
   {
     slug: "angel-food",
@@ -415,168 +578,7 @@ export const BRANDS: Brand[] = [
     note: "Foodservice sizes available — contact to discuss venue requirements.",
   },
 
-  /* ───────────────────────────── TONZU ───────────────────────────── */
-  {
-    slug: "tonzu",
-    name: "Tonzu",
-    kicker: "Organic wholefoods, family made since 1979",
-    since: "1979",
-    origin: "New Zealand",
-    tagline: "Plants. Tradition. Simplicity.",
-    story:
-      "Born from the Chalmers family's belief in the power of wholefoods, Tonzu has been making plant-based food in New Zealand since 1979. From traditionally crafted organic tofu and fermented tempeh to sausages, patties and marinated tofu, Tonzu brings together simple ingredients, plant protein and more than four decades of food-making experience.",
-    logo: "/brands/tonzu.webp",
-    color: "#3a8a1a",
-    color2: "#78c04a",
-    icon: Sprout,
-    categories: [
-      {
-        id: "organic-tofu",
-        title: "Organic Tofu",
-        tagline: "The heart of Tonzu.",
-        blurb:
-          "Traditionally made certified-organic tofu for stir-fries, curries, grilling and baking.",
-        icon: Bean,
-        products: [
-          {
-            name: "Traditional Tofu",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Handcrafted organic tofu made with Japanese stoneground activated beans.",
-            image: "/food-show/tonzu/traditional-tofu.webp",
-          },
-          {
-            name: "Tofu Double Pack",
-            size: "600g",
-            temp: "CHILLED",
-            desc: "Budget-friendly value pack of the original organic tofu.",
-            image: "/food-show/tonzu/tofu-double.webp",
-          },
-          {
-            name: "Firm Tofu",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Firmer take on the original tofu, made with the same traditional methods and gut-friendly nigari.",
-            image: "/food-show/tonzu/tofu-firm.webp",
-          },
-          {
-            name: "Firm Tofu Double Pack",
-            size: "600g",
-            temp: "CHILLED",
-            desc: "Great-value double pack of the firm organic tofu.",
-            image: "/food-show/tonzu/firm-double-pack.webp",
-          },
-          {
-            name: "Teriyaki Tofu Cubes",
-            size: "250g",
-            temp: "CHILLED",
-            desc: "Pre-cut organic tofu cubes in teriyaki marinade.",
-            image: "/food-show/tonzu/teriyaki-tofu-cubes.webp",
-          },
-          {
-            name: "Hoisin Tofu Cubes",
-            size: "250g",
-            temp: "CHILLED",
-            desc: "Ready-marinated organic tofu cubes in hoisin sauce — a quick and easy meal in moments.",
-            image: "/food-show/tonzu/hoisin-cubes.webp",
-          },
-          {
-            name: "Sweet & Sour Tofu Cubes",
-            size: "250g",
-            temp: "CHILLED",
-            desc: "Pre-cut cubes in a tangy sweet-and-sour marinade, ready for the pan.",
-            image: "/food-show/tonzu/sweet-sour-cubes.webp",
-          },
-        ],
-      },
-      {
-        id: "fermented-tempeh",
-        title: "Fermented Tempeh",
-        tagline: "Whole soybeans. Naturally fermented.",
-        blurb:
-          "A satisfying wholefood plant protein with characteristic texture and flavour.",
-        icon: Salad,
-        products: [
-          {
-            name: "Organic Tempeh",
-            size: "250g",
-            temp: "CHILLED",
-            desc: "Traditionally fermented whole-soybean block rich in fibre and protein.",
-            image: "/food-show/tonzu/organic-tempeh.webp",
-          },
-          {
-            name: "BBQ Tempeh Strips",
-            size: "250g",
-            temp: "CHILLED",
-            desc: "Ready-to-cook tempeh strips in a smokey barbecue marinade — straight into the pan.",
-            image: "/food-show/tonzu/tempeh-strips.webp",
-          },
-        ],
-      },
-      {
-        id: "sausages-patties",
-        title: "Sausages & Patties",
-        tagline: "Wholefood made easy.",
-        blurb:
-          "Convenient favourites built around Tonzu's longstanding expertise with soy and plant protein.",
-        icon: Sandwich,
-        products: [
-          {
-            name: "Italian Herb Sausages",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Organic tofu sausages with Italian herbs.",
-            image: "/food-show/tonzu/italian-herb-sausages.webp",
-          },
-          {
-            name: "Garlic & Chilli Sausages",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Plant sausages with roasted garlic and chilli.",
-            image: "/food-show/tonzu/garlic-chilli-sausages.webp",
-          },
-          {
-            name: "Sage & Onion Sausages",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Wholefood sausages with sweet onion and sage.",
-            image: "/food-show/tonzu/sage-onion-sausages.webp",
-          },
-          {
-            name: "Smokey Horopito",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Smoky sausages with native NZ horopito pepper.",
-            image: "/food-show/tonzu/smokey-horopito.webp",
-          },
-          {
-            name: "Cheese & Onion Sausages",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Chunky plant sausages packed with melting vegan cheese — the first of its kind.",
-            image: "/food-show/tonzu/cheese-onion-sausage.webp",
-          },
-          {
-            name: "Smokey BBQ Patties",
-            size: "300g",
-            temp: "CHILLED",
-            desc: "Hearty patties with rich barbecue flavour.",
-            image: "/food-show/tonzu/smokey-bbq-patties.webp",
-          },
-        ],
-      },
-    ],
-    contacts: [
-      {
-        name: "Travis Carruthers",
-        role: "Australia contact",
-        email: "travis@nextbite.com.au",
-        phones: ["0430 952 494"],
-      },
-    ],
-    sites: ["chalmersorganics.co.nz", "tonzu.co.nz", "nextbite.com.au"],
-    note: "Foodservice packs available — contact to discuss bulk supply for catering and retail.",
-  },
+ 
 
   /* ───────────────────────────── ZENZO ───────────────────────────── */
   {
@@ -770,17 +772,6 @@ export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
         name: "Shaikh Siddiqui",
         phones: ["+61 430 496 430"],
         email: "shaikh@nextbite.com.au",
-      },
-    ],
-  },
-  {
-    area: "Acquisition & Partnerships",
-    accent: "#71891b",
-    people: [
-      {
-        name: "Dion Campbell",
-        phones: ["+61 473 236 105"],
-        email: "dion@nextbite.com.au",
       },
     ],
   },
