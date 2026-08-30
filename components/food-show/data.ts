@@ -773,6 +773,17 @@ export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
       },
     ],
   },
+  {
+    area: "Acquisition & Partnerships",
+    accent: "#71891b",
+    people: [
+      {
+        name: "Dion Campbell",
+        phones: ["+61 473 236 105"],
+        email: "dion@nextbite.com.au",
+      },
+    ],
+  },
 ];
 
 export const DISTRIBUTION: {

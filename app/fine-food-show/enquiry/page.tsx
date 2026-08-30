@@ -87,13 +87,24 @@ export default function EnquiryPage() {
                    cheez us mein thori bari hoti hai */
                 const big = group.featured;
 
+                /* Do-column grid mein agar aam cards taaq (odd) hon to
+                   aakhri akela reh jata hai aur baghal mein khali khana
+                   bacha rehta hai — is liye woh poori chaurai le leta hai. */
+                const normals = ENQUIRY_CONTACTS.filter((g) => !g.featured);
+                const orphan =
+                  !big &&
+                  normals.length % 2 === 1 &&
+                  group === normals[normals.length - 1];
+
                 return (
                   <div
                     key={group.area}
                     className={`relative overflow-hidden rounded-xl border backdrop-blur-sm ${
                       big
                         ? "border-transparent px-5 py-4 sm:col-span-2"
-                        : "border-line bg-card/70 py-2.5 pr-3 pl-4"
+                        : `border-line bg-card/70 py-2.5 pr-3 pl-4 ${
+                            orphan ? "sm:col-span-2" : ""
+                          }`
                     }`}
                     style={
                       big

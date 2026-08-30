@@ -63,7 +63,7 @@ export function BrandOverview() {
               />
 
               <div className="relative flex items-start justify-between">
-                <BrandLogo brand={brand} size={52} />
+                <BrandLogo brand={brand} size={76} />
                 <ArrowUpRight
                   size={18}
                   className="text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
