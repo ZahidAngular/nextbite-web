@@ -40,17 +40,31 @@ export function BrandLogo({
     );
   }
 
+  /* Chip ki UNCHAI tay hai, chaurai logo ke hisaab se barhti hai.
+     Pehle chip chokor tha aur har logo usi chokor mein "contain"
+     hota tha — chunanche Tonzu (2.3:1) aur Zenzo (2.6:1) jaise
+     chaure wordmark sirf ~30px unche rehte the aur nanhe lagte the,
+     jabke Angel Food poora khana bhar leta tha. Ab har mark ki
+     unchai barabar hai; jo chaura hai uska chip chaura ho jata hai. */
+  const pad = Math.round(size * 0.16);
+
   return (
     <span
-      className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 ${className}`}
-      style={{ width: size, height: size, padding: Math.round(size * 0.13) }}
+      className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 ${className}`}
+      style={{
+        height: size,
+        minWidth: size,
+        paddingInline: pad,
+        paddingBlock: Math.round(pad * 0.75),
+      }}
     >
       <Image
         src={brand.logo}
         alt={`${brand.name} logo`}
-        width={size * 2}
+        width={size * 4}
         height={size * 2}
-        className="h-full w-full object-contain"
+        className="w-auto object-contain"
+        style={{ height: size - pad * 1.5 }}
       />
     </span>
   );
