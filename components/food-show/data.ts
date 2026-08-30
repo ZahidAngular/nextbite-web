@@ -525,7 +525,7 @@ export const BRANDS: Brand[] = [
             name: "Italian Herb Sausages",
             size: "300g",
             temp: "CHILLED",
-            desc: "Organic soybean sausages with Mediterranean herbs.",
+            desc: "Organic tofu sausages with Italian herbs.",
             image: "/food-show/tonzu/italian-herb-sausages.webp",
           },
           {
