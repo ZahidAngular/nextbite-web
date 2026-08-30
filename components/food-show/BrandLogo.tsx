@@ -18,10 +18,15 @@ import type { Brand } from "./data";
 export function BrandLogo({
   brand,
   size = 48,
+  width,
   className = "",
 }: {
   brand: Brand;
+  /** chip ki unchai */
   size?: number;
+  /** chip ki chaurai — na do to chokor. Sab chips ek naap ke rakhne
+   *  ke liye yahan ek hi qeemat pass karo. */
+  width?: number;
   className?: string;
 }) {
   if (!brand.logo) {
@@ -40,20 +45,23 @@ export function BrandLogo({
     );
   }
 
-  /* Chip ki UNCHAI tay hai, chaurai logo ke hisaab se barhti hai.
-     Pehle chip chokor tha aur har logo usi chokor mein "contain"
-     hota tha — chunanche Tonzu (2.3:1) aur Zenzo (2.6:1) jaise
-     chaure wordmark sirf ~30px unche rehte the aur nanhe lagte the,
-     jabke Angel Food poora khana bhar leta tha. Ab har mark ki
-     unchai barabar hai; jo chaura hai uska chip chaura ho jata hai. */
+  /* Chip ka naap tay hai — har brand ka chip bilkul ek jaisa. Andar
+     logo apni asal nisbat par, unchai se bandha hua.
+
+     Yeh do masle ek saath hal karta hai: chokor chip mein Tonzu
+     (2.3:1) aur Zenzo (2.6:1) jaise chaure wordmark aadhi unchai par
+     sikur jate the; aur agar chip ki chaurai logo ke saath badalne
+     do to chips bay-tarteeb ho jate hain. Ab chip sab ka barabar,
+     aur mark har brand ka barabar unchai ka. */
   const pad = Math.round(size * 0.16);
+  const boxW = width ?? size;
 
   return (
     <span
       className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 ${className}`}
       style={{
         height: size,
-        minWidth: size,
+        width: boxW,
         paddingInline: pad,
         paddingBlock: Math.round(pad * 0.75),
       }}
@@ -61,10 +69,15 @@ export function BrandLogo({
       <Image
         src={brand.logo}
         alt={`${brand.name} logo`}
-        width={size * 4}
+        width={size * 6}
         height={size * 2}
-        className="w-auto object-contain"
-        style={{ height: size - pad * 1.5 }}
+        className="object-contain"
+        style={{
+          maxHeight: size - pad * 1.5,
+          maxWidth: boxW - pad * 2,
+          height: "auto",
+          width: "auto",
+        }}
       />
     </span>
   );
