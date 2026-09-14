@@ -18,17 +18,17 @@ export function BrandOverview() {
             <span className="h-[2px] w-10 bg-gradient-to-l from-primary to-secondary" />
           </p>
           <h2 className="font-heading text-4xl font-bold tracking-[-0.03em] sm:text-5xl">
-            Four brands, <span className="text-gradient">one stand</span>
+            Two brands, <span className="text-gradient">one stand</span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted">
             Each brand brings its own craft and category — together they cover
-            chilled, frozen, organic and cultured across retail, trade and
+            chilled, frozen and cultured across retail, trade and
             foodservice.
           </p>
         </Reveal>
 
         {/* brand cards */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2">
           {BRANDS.map((brand, i) => (
             <motion.a
               key={brand.slug}

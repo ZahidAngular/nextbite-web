@@ -17,7 +17,6 @@ import { BRANDS, SHOW, type TempFilter } from "./data";
    ────────────────────────────────────────────── */
 const ticker = [
   `Stand ${SHOW.stand}`,
-  "Certified Organic",
   "Naturally Cultured",
   "Dairy-Free",
   "Trade & Foodservice Ready",

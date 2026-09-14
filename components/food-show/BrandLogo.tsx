@@ -7,12 +7,12 @@ import type { Brand } from "./data";
    Brand logo chip
 
    Logos alag alag banay hain — Angel Food ka
-   background safed hai, Tonzu ka wordmark gehra
-   charcoal, Nutty Bay ka bhi gehra. Is liye sab
-   ko ek halke "chip" par rakha jata hai taake
-   dono themes mein saaf nazar aayen.
+   background safed hai, Nutty Bay ka wordmark
+   gehra. Is liye sab ko ek halke "chip" par
+   rakha jata hai taake dono themes mein saaf
+   nazar aayen.
 
-   Jis brand ka logo na ho (Zenzo), uska icon
+   Jis brand ka logo na ho, uska icon
    brand-gradient ke sath dikh jata hai.
    ────────────────────────────────────────────── */
 export function BrandLogo({
@@ -48,8 +48,8 @@ export function BrandLogo({
   /* Chip ka naap tay hai — har brand ka chip bilkul ek jaisa. Andar
      logo apni asal nisbat par, unchai se bandha hua.
 
-     Yeh do masle ek saath hal karta hai: chokor chip mein Tonzu
-     (2.3:1) aur Zenzo (2.6:1) jaise chaure wordmark aadhi unchai par
+     Yeh do masle ek saath hal karta hai: chokor chip mein
+     chaure wordmark aadhi unchai par
      sikur jate the; aur agar chip ki chaurai logo ke saath badalne
      do to chips bay-tarteeb ho jate hain. Ab chip sab ka barabar,
      aur mark har brand ka barabar unchai ka. */

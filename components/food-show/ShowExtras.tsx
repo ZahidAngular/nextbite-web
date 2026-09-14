@@ -86,7 +86,7 @@ export function WhyPartnerShow() {
               <span className="text-gradient">our brands?</span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-              Organic wholefoods, naturally cultured ranges and trade-ready
+              Naturally cultured ranges and trade-ready
               formats — built for retail shelves and busy commercial kitchens
               alike.
             </p>

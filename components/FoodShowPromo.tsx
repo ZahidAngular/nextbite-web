@@ -22,8 +22,6 @@ import {
 const SHOWCASE = [
   { src: "/food-show/angel-food/cheddar-block.webp", alt: "Angel Food dairy-free Cheddar Block", rotate: -8 },
   { src: "/food-show/nutty-bay/classic-cheesy.webp", alt: "Nutty Bay Classic Cheesy cashew cheese", rotate: 5 },
-  { src: "/food-show/tonzu/traditional-tofu.webp", alt: "Tonzu organic Traditional Tofu", rotate: -4 },
-  { src: "/food-show/zenzo/natural-yoghurt.webp", alt: "Zenzo coconut Natural Yoghurt", rotate: 8 },
 ];
 
 export function FoodShowPromo() {
@@ -67,8 +65,8 @@ export function FoodShowPromo() {
 
                 <p className="mt-5 max-w-lg text-base leading-relaxed text-muted">
                   {BRANDS.length} distinct plant-based brands and{" "}
-                  {TOTAL_PRODUCTS} retail products — dairy-free cheese, organic
-                  tofu and tempeh, cultured cashew cheeses and coconut yoghurt.
+                  {TOTAL_PRODUCTS} retail products — dairy-free cheese and
+                  cultured cashew cheeses.
                   Come and taste the range at Stand {SHOW.stand}.
                 </p>
 

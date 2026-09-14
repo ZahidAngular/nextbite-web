@@ -63,7 +63,7 @@ function IntroSlide() {
         transition={{ delay: 0.2, duration: 0.7 }}
         className="font-display-black mt-5 text-[clamp(2.4rem,8vw,6.5rem)] leading-[0.95]"
       >
-        Four brands.
+        Two brands.
         <br />
         <span className="text-gradient">One portfolio.</span>
       </motion.h2>

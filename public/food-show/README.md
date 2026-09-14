@@ -5,12 +5,10 @@ Har file `webp` mein convert ki gayi (max 1200px) aur brand ke folder mein
 rakhi gayi hai.
 
 ```
-public/brands/          angel-food · nutty-bay · tonzu · zenzo   (4 logos)
+public/brands/          angel-food · nutty-bay   (2 logos)
 public/food-show/
   angel-food/           17 pack shots
   nutty-bay/             9 pack shots
-  tonzu/                 8 pack shots
-  zenzo/                 4 pack shots
 ```
 
 **38 / 44 products** ki asli tasveer lagi hui hai. Paths
@@ -21,8 +19,6 @@ public/food-show/
 | Brand | Products | Wajah |
 |---|---|---|
 | Angel Food | Veg Trio, Pizza Parmigiana, Mediterranean, Mediterranean 2 | Pizzas NZ site par nahi (Orogel collab, Australia-only) |
-| Tonzu | Ginger & Honey Tofu, Herb Tofu Nuggets | chalmersorganics.co.nz par listed nahi |
-
 In par brand-colour placeholder khud render hota hai.
 
 ## Pack shots kaise dikhti hain
@@ -54,5 +50,4 @@ Tips:
 - Square ya us ke qareeb best — frame square hai.
 - 1000–1200px chaurai kaafi hai.
 - Transparent PNG behtareen; webp mein alpha bach jata hai.
-- Agar cut-out ke kinaron par safed dhabbe hon (jaise Zenzo sour cream
-  mein thay), unko hata dena — warna safed tile par bhi nazar aate hain.
+- Agar cut-out ke kinaron par safed dhabbe hon, unko hata dena — warna safed tile par bhi nazar aate hain.

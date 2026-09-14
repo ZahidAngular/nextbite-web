@@ -22,7 +22,7 @@ const stats = [
   { value: String(BRANDS.length), label: "Distinct brands" },
   { value: `${TOTAL_PRODUCTS}`, label: "Retail SKUs" },
   { value: `${TOTAL_CATEGORIES}`, label: "Product ranges" },
-  { value: "45+", label: "Years of craft" },
+  { value: "20", label: "Years of craft" },
 ];
 
 export function ShowHero({
@@ -109,7 +109,7 @@ export function ShowHero({
               }}
               className="block"
             >
-              Four brands.
+              Two brands.
             </motion.span>
           </span>
           <span className="block overflow-hidden">
