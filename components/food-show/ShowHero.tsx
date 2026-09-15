@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowDown,
@@ -24,6 +25,14 @@ const stats = [
   { value: `${TOTAL_CATEGORIES}`, label: "Product ranges" },
   { value: "20", label: "Years of craft" },
 ];
+
+/* Hero ki dayen taraf pack shots — har brand ki jhalak.
+   Sirf xl+ par, taake chhoti screen par headline ke upar na aayen. */
+const HERO_SHOTS = [
+  { brand: "angel-food", src: "/food-show/angel-food/cheddar-block.webp", alt: "Angel Food dairy-free Cheddar Block", rotate: -6 },
+  { brand: "nutty-bay", src: "/food-show/nutty-bay/classic-cheesy.webp", alt: "Nutty Bay Classic Cheesy cashew cheese", rotate: 5 },
+  { brand: "foods-from-the-edge", src: "/food-show/foods-from-the-edge/sundried-tomato-cashew.webp", alt: "Foods From The Edge Sundried Tomato & Cashew dip", rotate: -3 },
+].map((shot) => ({ ...shot, brand: BRANDS.find((b) => b.slug === shot.brand)! }));
 
 export function ShowHero({
   onPlay,
@@ -76,8 +85,50 @@ export function ShowHero({
 
       <motion.div
         style={{ opacity: fade }}
-        className="mx-auto w-full max-w-7xl px-6"
+        className="relative mx-auto w-full max-w-7xl px-6"
       >
+        {/* ── pack shot collage (xl+) ──────────────────────── */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 right-6 hidden w-[23rem] -translate-y-1/2 grid-cols-2 gap-5 xl:grid"
+        >
+          {HERO_SHOTS.map((shot, i) => (
+            /* upar do, teesri neeche beech mein */
+            <div
+              key={shot.src}
+              className={i === 2 ? "col-span-2 mx-auto w-[calc(50%-0.625rem)]" : ""}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotate: 0 }}
+                animate={{ opacity: 1, y: 0, rotate: shot.rotate }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.45 + i * 0.1,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                className="relative aspect-square overflow-hidden rounded-3xl bg-white shadow-3d ring-1 ring-black/5"
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="200px"
+                  className="object-contain p-5 pb-9"
+                />
+                <span
+                  className="absolute bottom-2.5 left-1/2 -translate-x-1/2 rounded-full px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap"
+                  style={{
+                    background: `${shot.brand.color}14`,
+                    color: shot.brand.color,
+                  }}
+                >
+                  {shot.brand.name}
+                </span>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
         {/* ── event badge row ─────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -109,7 +160,7 @@ export function ShowHero({
               }}
               className="block"
             >
-              Two brands.
+              Three brands.
             </motion.span>
           </span>
           <span className="block overflow-hidden">

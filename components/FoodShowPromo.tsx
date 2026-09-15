@@ -22,6 +22,7 @@ import {
 const SHOWCASE = [
   { src: "/food-show/angel-food/cheddar-block.webp", alt: "Angel Food dairy-free Cheddar Block", rotate: -8 },
   { src: "/food-show/nutty-bay/classic-cheesy.webp", alt: "Nutty Bay Classic Cheesy cashew cheese", rotate: 5 },
+  { src: "/food-show/foods-from-the-edge/sundried-tomato-cashew.webp", alt: "Foods From The Edge Sundried Tomato & Cashew dip", rotate: -3 },
 ];
 
 export function FoodShowPromo() {
@@ -65,8 +66,8 @@ export function FoodShowPromo() {
 
                 <p className="mt-5 max-w-lg text-base leading-relaxed text-muted">
                   {BRANDS.length} distinct plant-based brands and{" "}
-                  {TOTAL_PRODUCTS} retail products — dairy-free cheese and
-                  cultured cashew cheeses.
+                  {TOTAL_PRODUCTS} retail products — dairy-free cheese, cultured
+                  cashew cheeses and wholefood dips, dressings and dukkah.
                   Come and taste the range at Stand {SHOW.stand}.
                 </p>
 
@@ -101,8 +102,8 @@ export function FoodShowPromo() {
                 </MagneticButton>
               </div>
 
-              {/* ── pack shot cluster ── */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-5">
+              {/* ── pack shot cluster — har brand ki ek, teesri neeche beech mein ── */}
+              <div className="mx-auto grid w-full max-w-[26rem] grid-cols-2 gap-4 sm:gap-5">
                 {SHOWCASE.map((shot, i) => (
                   <motion.div
                     key={shot.src}
@@ -115,7 +116,9 @@ export function FoodShowPromo() {
                       ease: [0.21, 0.47, 0.32, 0.98],
                     }}
                     whileHover={{ rotate: 0, scale: 1.05 }}
-                    className="relative aspect-square overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-black/5"
+                    className={`relative aspect-square overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-black/5 ${
+                      i === 2 ? "col-span-2 mx-auto w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.625rem)]" : ""
+                    }`}
                   >
                     <Image
                       src={shot.src}

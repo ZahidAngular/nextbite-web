@@ -18,7 +18,7 @@ export function BrandOverview() {
             <span className="h-[2px] w-10 bg-gradient-to-l from-primary to-secondary" />
           </p>
           <h2 className="font-heading text-4xl font-bold tracking-[-0.03em] sm:text-5xl">
-            Two brands, <span className="text-gradient">one stand</span>
+            Three brands, <span className="text-gradient">one stand</span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted">
             Each brand brings its own craft and category — together they cover
@@ -28,7 +28,7 @@ export function BrandOverview() {
         </Reveal>
 
         {/* brand cards */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BRANDS.map((brand, i) => (
             <motion.a
               key={brand.slug}

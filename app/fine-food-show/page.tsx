@@ -6,7 +6,7 @@ import { SHOW, TOTAL_PRODUCTS } from "@/components/food-show/data";
 import { enquiryQrSvg } from "@/lib/qr";
 
 const title = `${SHOW.name} ${SHOW.year} — Stand ${SHOW.stand} | NextBite`;
-const description = `${SHOW.headline} ${SHOW.intro} ${TOTAL_PRODUCTS} retail products across Angel Food and Nutty Bay — visit us at Stand ${SHOW.stand}.`;
+const description = `${SHOW.headline} ${SHOW.intro} ${TOTAL_PRODUCTS} retail products across Angel Food, Nutty Bay and Foods From The Edge — visit us at Stand ${SHOW.stand}.`;
 
 export const metadata: Metadata = {
   title,
@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     "cashew cheese",
     "Angel Food",
     "Nutty Bay",
+    "Foods From The Edge",
+    "dips",
+    "dressings",
+    "dukkah",
     "NextBite",
     "foodservice",
     "wholesale",
@@ -36,6 +40,7 @@ const navLinks = [
   { label: "Portfolio", href: "#brands" },
   { label: "Angel Food", href: "#angel-food" },
   { label: "Nutty Bay", href: "#nutty-bay" },
+  { label: "Foods From The Edge", href: "#foods-from-the-edge" },
 ];
 
 export default async function FineFoodShowPage() {

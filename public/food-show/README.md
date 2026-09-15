@@ -5,10 +5,11 @@ Har file `webp` mein convert ki gayi (max 1200px) aur brand ke folder mein
 rakhi gayi hai.
 
 ```
-public/brands/          angel-food · nutty-bay   (2 logos)
+public/brands/          angel-food · nutty-bay · foods-from-the-edge   (3 logos)
 public/food-show/
   angel-food/           17 pack shots
   nutty-bay/             9 pack shots
+  foods-from-the-edge/  10 photos (dips/dukkah bowl mein, dressings bottle)
 ```
 
 **38 / 44 products** ki asli tasveer lagi hui hai. Paths

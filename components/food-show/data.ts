@@ -1,17 +1,15 @@
 import {
   Amphora,
-  Bean,
   Beef,
   Cookie,
+  Droplets,
+  Leaf,
   type LucideIcon,
   Milk,
   Nut,
   Pizza,
-  Salad,
-  Sandwich,
   Soup,
   Sprout,
-  Utensils,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -34,9 +32,9 @@ export const SHOW = {
   name: "Fine Food Show",
   year: "2026",
   stand: "HB27",
-  headline: "Two distinct brands. One exceptional plant-based portfolio.",
+  headline: "Three distinct brands. One exceptional plant-based portfolio.",
   intro:
-    "From pioneering dairy-free favourites to artisan fermented nut cheeses.",
+    "From pioneering dairy-free favourites and artisan fermented nut cheeses to wholefood dips, dressings and dukkah.",
 } as const;
 
 export type Temp = "CHILLED" | "FROZEN";
@@ -413,12 +411,139 @@ export const BRANDS: Brand[] = [
     sites: ["nuttybay.com.au", "nextbite.com.au"],
     note: "Foodservice sizes available — contact to discuss venue requirements.",
   },
+
+  /* ─────────────────────── FOODS FROM THE EDGE ─────────────────────── */
+  {
+    slug: "foods-from-the-edge",
+    name: "Foods From The Edge",
+    kicker: "Wholefood flavour. Made differently.",
+    since: "—",
+    origin: "South Australia",
+    tagline: "Dips, dressings and dukkah with character.",
+    story:
+      "Foods From The Edge makes boldly flavoured dips, dressings and dukkah on the edge of the Adelaide Hills in South Australia. Every recipe starts with recognisable wholefood ingredients — vegetables, legumes, nuts, seeds, herbs and spices — made by Dips 2 U and developed with NextBite Brands for retail and foodservice across Australia and New Zealand.",
+    logo: "/brands/foods-from-the-edge.png",
+    color: "#5b7a3c",
+    color2: "#d9a43a",
+    icon: Leaf,
+    categories: [
+      {
+        id: "wholefood-dips",
+        title: "Wholefood Dips",
+        tagline: "A dip, spread and condiment in one.",
+        blurb:
+          "Distinctive dips built on vegetables, legumes and nuts — for crackers, sandwiches, grazing boards and shared tables.",
+        icon: Soup,
+        products: [
+          {
+            name: "Poppyseed Skordalia",
+            temp: "CHILLED",
+            desc: "Mediterranean-style potato dip with poppyseeds, roasted almonds, garlic and olive oil.",
+            image: "/food-show/foods-from-the-edge/poppyseed-skordalia.webp",
+          },
+          {
+            name: "Hommous",
+            temp: "CHILLED",
+            desc: "Classic chickpea dip with tahini, lemon, garlic and spices — vegan and gluten free.",
+            image: "/food-show/foods-from-the-edge/hommous.webp",
+          },
+          {
+            name: "French Artichoke",
+            temp: "CHILLED",
+            desc: "Artichokes and roasted cashews with garlic, dijon, yoghurt and parmesan.",
+            image: "/food-show/foods-from-the-edge/french-artichoke.webp",
+          },
+          {
+            name: "Cheesy Beetroot",
+            temp: "CHILLED",
+            desc: "Earthy beetroot blended with cream cheese, garlic and spices.",
+            image: "/food-show/foods-from-the-edge/cheesy-beetroot.webp",
+          },
+          {
+            name: "Sundried Tomato & Cashew",
+            temp: "CHILLED",
+            desc: "Sundried tomatoes and roasted cashews with cream cheese, garlic and coriander.",
+            image: "/food-show/foods-from-the-edge/sundried-tomato-cashew.webp",
+          },
+        ],
+      },
+      {
+        id: "dressings",
+        title: "Dressings",
+        tagline: "Enough flavour to change the plate.",
+        blurb:
+          "Ready-to-pour dressings and sauces for salads, bowls, vegetables and wraps.",
+        icon: Droplets,
+        products: [
+          {
+            name: "Attitude",
+            size: "375ml",
+            temp: "CHILLED",
+            desc: "The ultimate salad dressing and sauce — sugar free and low in salt.",
+            image: "/food-show/foods-from-the-edge/attitude.webp",
+          },
+          {
+            name: "Julius",
+            size: "375ml",
+            temp: "CHILLED",
+            desc: "The ultimate Caesar dressing with parmesan, garlic and anchovies.",
+            image: "/food-show/foods-from-the-edge/julius.webp",
+          },
+          {
+            name: "Tart",
+            size: "375ml",
+            temp: "CHILLED",
+            desc: "The ultimate balsamic vinaigrette — bright, sharp and vegan.",
+            image: "/food-show/foods-from-the-edge/tart.webp",
+          },
+        ],
+      },
+      {
+        id: "dukkah",
+        title: "Dukkah",
+        tagline: "Nuts, seeds and spice.",
+        blurb:
+          "Dip bread into olive oil, then dukkah — or scatter over vegetables, salads and hommous.",
+        icon: Sprout,
+        products: [
+          {
+            name: "Original Dukkah",
+            temp: "CHILLED",
+            desc: "Roasted almonds, sesame, coconut, coriander, fennel and cumin — vegan and gluten free.",
+            image: "/food-show/foods-from-the-edge/original-dukkah.webp",
+          },
+          {
+            name: "Spicy Dukkah",
+            temp: "CHILLED",
+            desc: "The original nut, seed and spice blend with extra white-pepper warmth.",
+            image: "/food-show/foods-from-the-edge/spicy-dukkah.webp",
+          },
+        ],
+      },
+    ],
+    contacts: [
+      {
+        name: "Travis Carruthers",
+        role: "Australia contact",
+        email: "travis@nextbite.com.au",
+        phones: ["0430 952 494"],
+      },
+      {
+        name: "Atif Sharjeel",
+        role: "Orders & contact",
+        email: "atif@nextbite.com.au",
+        phones: ["+61 481 317 161"],
+      },
+    ],
+    sites: ["nextbite.com.au"],
+    note: "Foodservice formats and commercial pack sizes available — contact to discuss.",
+  },
 ];
 
 /* ─────────────────────────── SUPPORTING DATA ─────────────────────────── */
 
 export const WHY_PARTNER = [
-  "Two complementary plant-based brands",
+  "Three complementary plant-based brands",
   "Naturally cultured options",
   "Retail, trade and foodservice-ready formats",
   "Foodservice bulk sizes available — contact to discuss",
@@ -434,7 +559,7 @@ export const STORAGE = [
     temp: "CHILLED" as Temp,
     label: "Keep Chilled",
     items:
-      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter",
+      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Foods From The Edge dips, dressings and dukkah",
   },
 ];
 
