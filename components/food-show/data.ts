@@ -7,9 +7,12 @@ import {
   type LucideIcon,
   Milk,
   Nut,
+  Package,
   Pizza,
+  Snowflake,
   Soup,
   Sprout,
+  Thermometer,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -37,9 +40,16 @@ export const SHOW = {
     "From pioneering dairy-free favourites and artisan fermented nut cheeses to wholefood dips, dressings and dukkah.",
 } as const;
 
-export type Temp = "CHILLED" | "FROZEN";
+export type Temp = "CHILLED" | "FROZEN" | "AMBIENT";
 
-/** rail filter — "ALL" plus the two storage temps */
+/** har haalat ka rang aur icon — chip, storage strip aur slideshow sab yahin se lete hain */
+export const TEMP_META: Record<Temp, { tint: string; icon: LucideIcon }> = {
+  CHILLED: { tint: "#12897c", icon: Thermometer },
+  FROZEN: { tint: "#38a2e0", icon: Snowflake },
+  AMBIENT: { tint: "#c68410", icon: Package },
+};
+
+/** rail filter — "ALL" plus the storage temps */
 export type TempFilter = "ALL" | Temp;
 
 export type Product = {
@@ -478,21 +488,21 @@ export const BRANDS: Brand[] = [
           {
             name: "Attitude",
             size: "375ml",
-            temp: "CHILLED",
+            temp: "AMBIENT",
             desc: "The ultimate salad dressing and sauce — sugar free and low in salt.",
             image: "/food-show/foods-from-the-edge/attitude.webp",
           },
           {
             name: "Julius",
             size: "375ml",
-            temp: "CHILLED",
+            temp: "AMBIENT",
             desc: "The ultimate Caesar dressing with parmesan, garlic and anchovies.",
             image: "/food-show/foods-from-the-edge/julius.webp",
           },
           {
             name: "Tart",
             size: "375ml",
-            temp: "CHILLED",
+            temp: "AMBIENT",
             desc: "The ultimate balsamic vinaigrette — bright, sharp and vegan.",
             image: "/food-show/foods-from-the-edge/tart.webp",
           },
@@ -559,7 +569,12 @@ export const STORAGE = [
     temp: "CHILLED" as Temp,
     label: "Keep Chilled",
     items:
-      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Foods From The Edge dips, dressings and dukkah",
+      "Dairy-free cheeses · Nutty Bay cultured cheeses, nut butters and vegan butter · Foods From The Edge dips and dukkah",
+  },
+  {
+    temp: "AMBIENT" as Temp,
+    label: "Store Ambient",
+    items: "Foods From The Edge dressings — pantry stable, no refrigeration needed",
   },
 ];
 

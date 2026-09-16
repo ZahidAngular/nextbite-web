@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Snowflake, Thermometer } from "lucide-react";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { STORAGE, WHY_PARTNER } from "./data";
+import { STORAGE, TEMP_META, WHY_PARTNER } from "./data";
 
 /* ──────────────────────────────────────────────
-   Storage strip — KEEP FROZEN / KEEP CHILLED
+   Storage strip — KEEP FROZEN / KEEP CHILLED / STORE AMBIENT
    ────────────────────────────────────────────── */
 export function StorageStrip() {
   return (
@@ -21,11 +21,9 @@ export function StorageStrip() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {STORAGE.map((s, i) => {
-            const frozen = s.temp === "FROZEN";
-            const Icon = frozen ? Snowflake : Thermometer;
-            const tint = frozen ? "#38a2e0" : "#12897c";
+            const { icon: Icon, tint } = TEMP_META[s.temp];
 
             return (
               <motion.div

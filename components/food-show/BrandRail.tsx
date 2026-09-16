@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LayoutGrid, MonitorPlay, Snowflake, Thermometer } from "lucide-react";
+import { LayoutGrid, MonitorPlay, Package, Snowflake, Thermometer } from "lucide-react";
 import { BRANDS, type TempFilter } from "./data";
 
 const FILTERS: { value: TempFilter; label: string; icon: typeof LayoutGrid }[] = [
   { value: "ALL", label: "All", icon: LayoutGrid },
   { value: "CHILLED", label: "Chilled", icon: Thermometer },
   { value: "FROZEN", label: "Frozen", icon: Snowflake },
+  { value: "AMBIENT", label: "Ambient", icon: Package },
 ];
 
 /**
- * Sticky rail — brand jump links (scroll-spy) + chilled/frozen filter.
+ * Sticky rail — brand jump links (scroll-spy) + storage filter.
  * Sirf tab dikhta hai jab user brand sections ke andar ho.
  */
 export function BrandRail({

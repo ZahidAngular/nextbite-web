@@ -2,12 +2,27 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ImageIcon, Snowflake, Thermometer, type LucideIcon } from "lucide-react";
-import type { Product } from "./data";
+import { ImageIcon, type LucideIcon } from "lucide-react";
+import { TEMP_META, type Product } from "./data";
 
 /* ──────────────────────────────────────────────
-   Temperature chip — CHILLED (blue) / FROZEN (cyan)
+   Storage chip — CHILLED (teal) / FROZEN (blue) / AMBIENT (amber)
    ────────────────────────────────────────────── */
+const CHIP_TONE: Record<Product["temp"], { onLight: string; onDark: string }> = {
+  CHILLED: {
+    onLight: "border-teal-500/40 bg-teal-500/15 text-teal-800",
+    onDark: "border-teal-400/40 bg-teal-400/15 text-teal-700 dark:text-teal-300",
+  },
+  FROZEN: {
+    onLight: "border-sky-500/40 bg-sky-500/15 text-sky-700",
+    onDark: "border-sky-400/40 bg-sky-400/15 text-sky-600 dark:text-sky-300",
+  },
+  AMBIENT: {
+    onLight: "border-amber-500/40 bg-amber-500/15 text-amber-800",
+    onDark: "border-amber-400/40 bg-amber-400/15 text-amber-700 dark:text-amber-300",
+  },
+};
+
 export function TempChip({
   temp,
   /** true jab chip safed pack-shot tile par ho — tab theme se farq nahi parta */
@@ -18,16 +33,8 @@ export function TempChip({
   onLight?: boolean;
   className?: string;
 }) {
-  const frozen = temp === "FROZEN";
-  const Icon = frozen ? Snowflake : Thermometer;
-
-  const tone = onLight
-    ? frozen
-      ? "border-sky-500/40 bg-sky-500/15 text-sky-700"
-      : "border-teal-500/40 bg-teal-500/15 text-teal-800"
-    : frozen
-      ? "border-sky-400/40 bg-sky-400/15 text-sky-600 dark:text-sky-300"
-      : "border-teal-400/40 bg-teal-400/15 text-teal-700 dark:text-teal-300";
+  const Icon = TEMP_META[temp].icon;
+  const tone = onLight ? CHIP_TONE[temp].onLight : CHIP_TONE[temp].onDark;
 
   return (
     <span
