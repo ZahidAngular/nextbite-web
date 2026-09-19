@@ -18,7 +18,7 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center", className)}>
       <Image
-        src="/logo.png"
+        src="/logo.webp"
         alt="NextBite"
         width={140}
         height={48}

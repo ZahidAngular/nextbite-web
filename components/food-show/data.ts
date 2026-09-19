@@ -432,7 +432,7 @@ export const BRANDS: Brand[] = [
     tagline: "Dips, dressings and dukkah with character.",
     story:
       "Foods From The Edge makes boldly flavoured dips, dressings and dukkah on the edge of the Adelaide Hills in South Australia. Every recipe starts with recognisable wholefood ingredients — vegetables, legumes, nuts, seeds, herbs and spices — made by Dips 2 U and developed with NextBite Brands for retail and foodservice across Australia and New Zealand.",
-    logo: "/brands/foods-from-the-edge.png",
+    logo: "/brands/foods-from-the-edge.webp",
     color: "#5b7a3c",
     color2: "#d9a43a",
     icon: Leaf,

@@ -143,7 +143,7 @@ export function Hero() {
             className="relative mt-10 h-56 w-full overflow-hidden rounded-3xl lg:hidden"
           >
             <Image
-              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80"
+              src="/images/hero-bowl.webp"
               alt="Fresh plant-based ingredients"
               fill
               sizes="100vw"
@@ -195,7 +195,7 @@ export function Hero() {
               className="preserve-3d shadow-3d animate-float absolute top-0 right-2 h-[440px] w-[320px] overflow-hidden rounded-[2.5rem] border border-line"
             >
               <Image
-                src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80"
+                src="/images/hero-bowl.webp"
                 alt="Fresh plant-based ingredients" fill sizes="320px" priority
                 className="object-cover scale-105"
               />
@@ -216,7 +216,7 @@ export function Hero() {
               className="preserve-3d shadow-3d animate-float-slow absolute bottom-6 left-0 h-[310px] w-[255px] overflow-hidden rounded-[2.5rem] border border-line"
             >
               <Image
-                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80"
+                src="/images/hero-salad.webp"
                 alt="Healthy plant-based bowl" fill sizes="255px"
                 className="object-cover"
               />

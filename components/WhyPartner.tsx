@@ -33,7 +33,7 @@ export function WhyPartner() {
       {/* parallax background */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0" aria-hidden>
         <Image
-          src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1800&q=80"
+          src="/images/whypartner-field.webp"
           alt=""
           fill
           sizes="100vw"

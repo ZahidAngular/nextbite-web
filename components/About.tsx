@@ -40,7 +40,7 @@ export function About() {
             <TiltCard className="shadow-3d overflow-hidden rounded-[1.25rem] isolate h-full">
               <div className="relative h-72 w-full sm:h-80 lg:h-full lg:min-h-[620px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=85"
+                  src="/images/about-kitchen.webp"
                   alt="Plant-based food platform"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
