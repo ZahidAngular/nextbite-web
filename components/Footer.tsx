@@ -1,7 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Logo } from "./Logo";
+
+/* Legal pages — naya page bane to yahan ek line jodo */
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Use", href: "/terms-of-use" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
+];
 
 const socials = [
   {
@@ -71,8 +80,19 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-line pt-7 text-sm text-muted">
-          Copyright © {new Date().getFullYear()} NextBite. All Rights Reserved.
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 border-t border-line pt-7 text-sm text-muted sm:flex-row sm:gap-6">
+          <span>Copyright © {new Date().getFullYear()} NextBite. All Rights Reserved.</span>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>

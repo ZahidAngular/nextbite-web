@@ -20,6 +20,10 @@ export const dynamic = "force-static";
 const PAGES: { path: string; lastModified: string }[] = [
   { path: "/", lastModified: "2026-08-28" },
   { path: "/fine-food-show", lastModified: "2026-09-16" },
+  { path: "/privacy-policy", lastModified: "2026-09-18" },
+  { path: "/terms-of-use", lastModified: "2026-09-18" },
+  { path: "/cookie-policy", lastModified: "2026-09-18" },
+  { path: "/disclaimer", lastModified: "2026-09-18" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
