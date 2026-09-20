@@ -475,6 +475,30 @@ export const BRANDS: Brand[] = [
             desc: "Sundried tomatoes and roasted cashews with cream cheese, garlic and coriander.",
             image: "/food-show/foods-from-the-edge/sundried-tomato-cashew.webp",
           },
+          {
+            name: "Rocket & Cashew",
+            temp: "CHILLED",
+            desc: "Roasted cashews and fresh rocket with parmesan, garlic and sweet chilli.",
+            image: "/food-show/foods-from-the-edge/rocket-cashew.webp",
+          },
+          {
+            name: "African Cheese",
+            temp: "CHILLED",
+            desc: "Cream cheese lifted with harissa — warm, spiced and generous.",
+            image: "/food-show/foods-from-the-edge/african-cheese.webp",
+          },
+          {
+            name: "Babaganoush",
+            temp: "CHILLED",
+            desc: "Roasted eggplant with tahini, lemon, yoghurt and herbs.",
+            image: "/food-show/foods-from-the-edge/babaganoush.webp",
+          },
+          {
+            name: "Porcini and Black Garlic",
+            temp: "CHILLED",
+            desc: "Porcini and field mushrooms with black garlic, cream cheese and spices.",
+            image: "/food-show/foods-from-the-edge/porcini-black-garlic.webp",
+          },
         ],
       },
       {
