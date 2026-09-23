@@ -152,6 +152,30 @@ export function Contact() {
                   <><Send size={18} /> Send Message</>
                 )}
               </motion.button>
+
+              {/* Google ka usool: reCAPTCHA v3 ka badge chhupa rakha hai,
+                  is liye yeh line dikhana zaroori hai. */}
+              <p className="mt-4 text-center text-xs leading-relaxed text-muted">
+                This site is protected by reCAPTCHA and the Google{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-primary"
+                >
+                  Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-primary"
+                >
+                  Terms of Service
+                </a>{" "}
+                apply.
+              </p>
             </form>
           </motion.div>
         </div>

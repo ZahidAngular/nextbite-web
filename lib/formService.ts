@@ -1,8 +1,10 @@
+/* reCAPTCHA v3 — NextBite ki apni key.
+   Site key public hoti hai (browser mein jati hai). Secret key
+   YAHAN NAHI aati: woh server par lagti hai, jo token verify
+   karta hai (webapi.webappconsulting.com.au). */
+const RECAPTCHA_SITE_KEY = "6LeNwMYtAAAAAL9tdo2KQYVTgK1G5G6um1hPvUBJ";
 
-const RECAPTCHA_SITE_KEY = "6LcSZSAkAAAAAFxJ_WfOQl4itrBsLPDcVkGGRmtI";
-
-
-const ENABLE_RECAPTCHA = false;
+const ENABLE_RECAPTCHA = true;
 
 const LEAD_API_URL = "https://webapi.webappconsulting.com.au/api/contactus/save";
 const WEBSITE_ID = "22";
@@ -28,7 +30,6 @@ function loadRecaptcha(): Promise<void> {
 
   recaptchaPromise = new Promise<void>((resolve, reject) => {
     const script = document.createElement("script");
-    // script.src = https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY};
     script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
     script.async = true;
     script.defer = true;
