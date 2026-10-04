@@ -38,12 +38,12 @@ export function Preloader() {
           c = 100;
           setCount(100);
           if (intervalRef.current) clearInterval(intervalRef.current);
-          setTimeout(() => setExiting(true), 150);
+          setTimeout(() => setExiting(true), 110);
         } else {
           setCount(c);
         }
-      }, 11);
-    }, 320);
+      }, 8);
+    }, 220);
 
     return () => {
       clearTimeout(t);

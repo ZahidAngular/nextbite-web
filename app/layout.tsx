@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { siteOrigin } from "@/lib/qr";
+import { OG_IMAGE } from "@/lib/seo";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 
@@ -45,17 +47,27 @@ const fontText = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteOrigin()),
   title: "NextBite — Building the Home for Plant-Based Brands",
   description:
     "A next-generation food platform focused on owning, licensing, launching, and scaling leading plant-based brands across Australia and New Zealand.",
-  keywords: ["plant-based", "food brands", "Australia", "New Zealand", "FMCG", "sustainable food"],
   authors: [{ name: "NextBite" }],
   openGraph: {
     title: "NextBite — Building the Home for Plant-Based Brands",
     description:
       "A next-generation food platform focused on plant-based brands across Australia and New Zealand.",
+    url: siteOrigin(),
+    siteName: "NextBite",
     type: "website",
     locale: "en_AU",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NextBite — Building the Home for Plant-Based Brands",
+    description:
+      "A next-generation food platform focused on plant-based brands across Australia and New Zealand.",
+    images: [OG_IMAGE.url],
   },
 };
 

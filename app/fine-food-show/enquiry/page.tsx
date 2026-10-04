@@ -4,6 +4,7 @@ import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { EnquiryForm } from "@/components/food-show/EnquiryForm";
 import { ENQUIRY_CONTACTS, SHOW } from "@/components/food-show/data";
+import { pageMeta } from "@/lib/seo";
 
 /* ═══════════════════════════════════════════════════════════════
    QR scan karne wale seedha yahan aate hain.
@@ -17,11 +18,12 @@ import { ENQUIRY_CONTACTS, SHOW } from "@/components/food-show/data";
    mein — wahan jagah kaafi hai.
    ═══════════════════════════════════════════════════════════════ */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: `Enquiry — Stand ${SHOW.stand} | NextBite`,
   description: `Send an enquiry to the NextBite team at ${SHOW.name} ${SHOW.year}, Stand ${SHOW.stand}. Retail, wholesale and foodservice welcome.`,
-  robots: { index: false, follow: false },
-};
+  path: "/fine-food-show/enquiry",
+  noIndex: true,
+});
 
 export default function EnquiryPage() {
   return (

@@ -4,13 +4,13 @@ import { Footer } from "@/components/Footer";
 import { FoodShow } from "@/components/food-show/FoodShow";
 import { SHOW, TOTAL_PRODUCTS } from "@/components/food-show/data";
 import { enquiryQrSvg } from "@/lib/qr";
+import { pageMeta } from "@/lib/seo";
 
 const title = `${SHOW.name} ${SHOW.year} — Stand ${SHOW.stand} | NextBite`;
-const description = `${SHOW.headline} ${SHOW.intro} ${TOTAL_PRODUCTS} retail products across Angel Food, Nutty Bay and Foods From The Edge — visit us at Stand ${SHOW.stand}.`;
+const description = `${TOTAL_PRODUCTS} retail products from Angel Food, Nutty Bay and Foods From The Edge at ${SHOW.name} ${SHOW.year} — Stand ${SHOW.stand}.`;
 
 export const metadata: Metadata = {
-  title,
-  description,
+  ...pageMeta({ title, description, path: "/fine-food-show" }),
   keywords: [
     "Fine Food Show 2026",
     "Stand HB27",
@@ -27,12 +27,6 @@ export const metadata: Metadata = {
     "foodservice",
     "wholesale",
   ],
-  openGraph: {
-    title,
-    description,
-    type: "website",
-    locale: "en_AU",
-  },
 };
 
 /* Nav links is page ke apne sections par jaate hain */
