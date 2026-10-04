@@ -57,7 +57,7 @@ export function Navbar({
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 2.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.8, delay: 0.99, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled ? "glass shadow-lg" : "bg-transparent"

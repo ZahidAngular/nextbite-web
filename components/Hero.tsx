@@ -72,7 +72,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 2.3, duration: 0.8 }}
+            transition={{ delay: 1.03, duration: 0.8 }}
             className="mb-8 flex items-center gap-4 text-sm font-semibold tracking-[0.35em] text-secondary uppercase"
           >
             <span className="h-[2px] w-12 bg-gradient-to-r from-primary to-secondary" />
@@ -82,23 +82,23 @@ export function Hero() {
           {/* GIANT headline — Bricolage Grotesque award-site style */}
           <h1 className="font-hero text-[clamp(2.8rem,8vw,7.5rem)] tracking-[-0.04em] leading-[0.92]">
             <span className="block overflow-hidden font-extrabold">
-              <RevealWords text="Building the" delay={2.4} />
+              <RevealWords text="Building the" delay={1.08} />
             </span>
             <span className="block overflow-hidden font-light text-foreground/55 tracking-[-0.02em]">
-              <RevealWords text="home for" delay={2.55} />
+              <RevealWords text="home for" delay={1.15} />
             </span>
             <span className="block overflow-hidden font-extrabold">
-              <RevealWords text="Plant-Based" delay={2.7} className="text-gradient" />
+              <RevealWords text="Plant-Based" delay={1.22} className="text-gradient" />
             </span>
             <span className="block overflow-hidden font-extrabold">
-              <RevealWords text="Brands." delay={2.85} className="text-gradient" />
+              <RevealWords text="Brands." delay={1.28} className="text-gradient" />
             </span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.1, duration: 0.8 }}
+            transition={{ delay: 1.4, duration: 0.8 }}
             className="mt-7 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
           >
             A next-generation food platform focused on owning, licensing, launching, and
@@ -109,7 +109,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.3 }}
+            transition={{ delay: 1.48 }}
             className="mt-10 flex flex-wrap items-center gap-5"
           >
             <MagneticButton>
@@ -139,7 +139,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.1, duration: 0.9 }}
+            transition={{ delay: 1.4, duration: 0.9 }}
             className="relative mt-10 h-56 w-full overflow-hidden rounded-3xl lg:hidden"
           >
             <Image
@@ -161,7 +161,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3.6 }}
+            transition={{ delay: 1.62 }}
             className="mt-10 flex flex-wrap gap-6 border-t border-line pt-8 sm:gap-10"
           >
             {[
@@ -191,7 +191,7 @@ export function Hero() {
               style={{ y: card1Y, rotateY: card1RY, rotateX: card1RX }}
               initial={{ opacity: 0, rotateY: -30, x: 110 }}
               animate={{ opacity: 1, rotateY: -12, x: 0 }}
-              transition={{ delay: 2.6, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ delay: 1.17, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="preserve-3d shadow-3d animate-float absolute top-0 right-2 h-[440px] w-[320px] overflow-hidden rounded-[2.5rem] border border-line"
             >
               <Image
@@ -212,7 +212,7 @@ export function Hero() {
               style={{ y: card2Y, rotateY: card2RY }}
               initial={{ opacity: 0, rotateY: 28, x: -55 }}
               animate={{ opacity: 1, rotateY: 10, x: 0 }}
-              transition={{ delay: 2.9, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ delay: 1.3, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="preserve-3d shadow-3d animate-float-slow absolute bottom-6 left-0 h-[310px] w-[255px] overflow-hidden rounded-[2.5rem] border border-line"
             >
               <Image
@@ -227,7 +227,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 3.4, type: "spring" }}
+              transition={{ delay: 1.53, type: "spring" }}
               className="absolute -top-10 -left-10 z-10"
             >
               <OrbitalRings className="relative h-32 w-32" />
@@ -237,7 +237,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 3.3, type: "spring" }}
+              transition={{ delay: 1.48, type: "spring" }}
               className="glass shadow-3d animate-pulse-glow absolute top-[42%] left-[22%] z-20 flex h-[130px] w-[130px] items-center justify-center rounded-full"
             >
               <motion.svg style={{ rotate: badgeRotate }} viewBox="0 0 100 100" className="absolute h-full w-full p-2">
@@ -255,7 +255,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.7 }}
+              transition={{ delay: 1.67 }}
               className="glass shadow-3d absolute top-8 left-1 z-30 rounded-2xl px-4 py-3"
             >
               <div className="flex items-center gap-3">
@@ -271,7 +271,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4.0 }}
+        transition={{ delay: 1.8 }}
         style={{ opacity: textOpacity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >

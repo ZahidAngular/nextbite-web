@@ -67,16 +67,23 @@ export const metadata: Metadata = {
 const GTM_ID = "GTM-NC6MPFCF";
 const GA4_ID = "G-PWJQKSJNWX";
 
+/* GTM page ke pehle paint ke baad load hota hai — snippet wahi
+   Google wala hai, bas `load` ke baad chalta hai taake pehla safha
+   jaldi nazar aaye. Measurement par koi farq nahi parta. */
 const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js'});function g(){var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+if(d.readyState==='complete'){setTimeout(g,1200)}else{w.addEventListener('load',function(){setTimeout(g,1200)})}
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 
 const ga4Script = `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA4_ID}');`;
+gtag('config', '${GA4_ID}');
+(function(d,w){function g(){var j=d.createElement('script');j.async=true;
+j.src='https://www.googletagmanager.com/gtag/js?id=${GA4_ID}';d.head.appendChild(j);}
+if(d.readyState==='complete'){setTimeout(g,1200)}else{w.addEventListener('load',function(){setTimeout(g,1200)})}})(document,window);`;
 
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`;
 
@@ -88,8 +95,7 @@ export default function RootLayout({
       <head>
         {/* Google Tag Manager */}
         <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
-        {/* Google tag (gtag.js) — GA4 */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />
+        {/* Google tag (gtag.js) — GA4, pehle paint ke baad */}
         <script dangerouslySetInnerHTML={{ __html: ga4Script }} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

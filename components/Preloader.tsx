@@ -38,12 +38,12 @@ export function Preloader() {
           c = 100;
           setCount(100);
           if (intervalRef.current) clearInterval(intervalRef.current);
-          setTimeout(() => setExiting(true), 380);
+          setTimeout(() => setExiting(true), 150);
         } else {
           setCount(c);
         }
-      }, 26);
-    }, 900);
+      }, 11);
+    }, 320);
 
     return () => {
       clearTimeout(t);
@@ -68,7 +68,7 @@ export function Preloader() {
       <motion.div
         initial={{ y: "0%" }}
         animate={{ y: exiting ? "-100%" : "0%" }}
-        transition={{ duration: 1.05, ease: EASE, delay: exiting ? 0.06 : 0 }}
+        transition={{ duration: 0.6, ease: EASE, delay: exiting ? 0.04 : 0 }}
         onAnimationComplete={handleExitDone}
         className="absolute inset-x-0 top-0 flex h-[50%] flex-col items-center justify-end overflow-hidden"
         style={{ background: BG }}
@@ -84,8 +84,8 @@ export function Preloader() {
               initial={{ opacity: 0, rotateX: -90, y: 48 }}
               animate={{ opacity: 1, rotateX: 0, y: 0 }}
               transition={{
-                delay: 0.1 + i * 0.072,
-                duration: 0.72,
+                delay: 0.05 + i * 0.03,
+                duration: 0.4,
                 ease: [0.21, 0.47, 0.32, 0.98],
               }}
               style={{ display: "inline-block", transformStyle: "preserve-3d" }}
@@ -102,7 +102,7 @@ export function Preloader() {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: exiting ? 0 : 0.9 }}
-          transition={{ delay: 0.6, duration: 1.0 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
           className="absolute bottom-0 left-0 right-0 h-[1.5px] origin-left"
           style={{
             background:
@@ -115,7 +115,7 @@ export function Preloader() {
       <motion.div
         initial={{ y: "0%" }}
         animate={{ y: exiting ? "100%" : "0%" }}
-        transition={{ duration: 1.05, ease: EASE, delay: exiting ? 0 : 0 }}
+        transition={{ duration: 0.6, ease: EASE, delay: exiting ? 0 : 0 }}
         className="absolute inset-x-0 bottom-0 flex h-[50%] flex-col items-center justify-start overflow-hidden pt-7"
         style={{ background: BG }}
       >
@@ -123,7 +123,7 @@ export function Preloader() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 0.65 }}
+          transition={{ delay: 0.4, duration: 0.35 }}
           className="text-center text-[0.65rem] font-medium tracking-[0.25em] sm:tracking-[0.55em] text-white/40 uppercase px-6"
         >
           Building the home for plant&#8209;based brands
@@ -145,7 +145,7 @@ export function Preloader() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.75 }}
+          transition={{ delay: 0.3 }}
           className="mt-4 flex items-baseline gap-0.5 font-mono text-sm tabular-nums"
         >
           <span className="text-white/50">
