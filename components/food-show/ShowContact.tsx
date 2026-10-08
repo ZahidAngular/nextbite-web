@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { Reveal } from "@/components/Reveal";
-import { ALL_SITES, DISTRIBUTION, SHOW, siteHref } from "./data";
+import { ALL_SITES, DISTRIBUTION, SHOW, SHOW_EMAIL, siteHref } from "./data";
 
 export function ShowContact({
   onPlay,
@@ -50,7 +50,8 @@ export function ShowContact({
           </p>
         </Reveal>
 
-        {/* contact cards */}
+        {/* contact cards — koi contact na ho to yeh hissa dikhta hi nahi */}
+        {DISTRIBUTION.length > 0 && (
         <div className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-2">
           {DISTRIBUTION.map((d, i) => (
             <motion.div
@@ -106,6 +107,7 @@ export function ShowContact({
             </motion.div>
           ))}
         </div>
+        )}
 
         {/* ── stand CTA ────────────────────────────────────── */}
         <Reveal className="mt-16">
@@ -164,7 +166,7 @@ export function ShowContact({
                 <p className="mt-5 text-[13px] opacity-80">
                   Two quick steps — or{" "}
                   <a
-                    href={`mailto:${DISTRIBUTION[0].contact.email}?subject=${encodeURIComponent(
+                    href={`mailto:${SHOW_EMAIL}?subject=${encodeURIComponent(
                       `${SHOW.name} ${SHOW.year} — Stand ${SHOW.stand} enquiry`
                     )}`}
                     className="font-semibold underline underline-offset-4 transition-opacity hover:opacity-100"

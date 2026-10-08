@@ -294,14 +294,7 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    contacts: [
-      {
-        name: "Travis Carruthers",
-        role: "Australia contact",
-        email: "travis@nextbite.com.au",
-        phones: ["0430 952 494"],
-      },
-    ],
+    contacts: [],
     sites: ["angelfood.co.nz", "nextbite.com.au"],
     note: "Foodservice packs and bulk sizes available — contact to discuss custom options.",
   },
@@ -404,20 +397,7 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    contacts: [
-      {
-        name: "Atif Sharjeel",
-        role: "Orders & contact",
-        email: "atif@nextbite.com.au",
-        phones: ["+61 481 317 161"],
-      },
-      {
-        name: "Travis Carruthers",
-        role: "Australia contact",
-        email: "travis@nextbite.com.au",
-        phones: ["0430 952 494"],
-      },
-    ],
+    contacts: [],
     sites: ["nuttybay.com.au", "nextbite.com.au"],
     note: "Foodservice sizes available — contact to discuss venue requirements.",
   },
@@ -555,20 +535,7 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    contacts: [
-      {
-        name: "Travis Carruthers",
-        role: "Australia contact",
-        email: "travis@nextbite.com.au",
-        phones: ["0430 952 494"],
-      },
-      {
-        name: "Atif Sharjeel",
-        role: "Orders & contact",
-        email: "atif@nextbite.com.au",
-        phones: ["+61 481 317 161"],
-      },
-    ],
+    contacts: [],
     sites: ["nextbite.com.au"],
     note: "Foodservice formats and commercial pack sizes available — contact to discuss.",
   },
@@ -624,32 +591,10 @@ export type EnquiryContactGroup = {
 
 export const ENQUIRY_CONTACTS: EnquiryContactGroup[] = [
   {
-    area: "Food service and distribution",
-    accent: "#3a8a1a",
-    /* pehli qatar mein akela aur numaya */
-    featured: true,
-    people: [
-      {
-        name: "Travis Carruthers",
-        phones: ["+61 430 952 494"],
-        email: "travis@nextbite.com.au",
-      },
-    ],
-  },
-  {
-    area: "International branding and partnership",
-    accent: "#e07c0a",
-    people: [
-      {
-        name: "Atif Sharjeel",
-        phones: ["+61 481 317 161", "+65 8133 1443"],
-        email: "atif@nextbite.com.au",
-      },
-    ],
-  },
-  {
     area: "Smartshelf and IT services",
     accent: "#c68410",
+    /* ab yahi akela group hai — numaya dikhao */
+    featured: true,
     people: [
       {
         name: "Shaikh Siddiqui",
@@ -664,26 +609,10 @@ export const DISTRIBUTION: {
   title: string;
   subtitle: string;
   contact: Contact;
-}[] = [
-  {
-    title: "National & International Distribution",
-    subtitle: "Distribution, wholesale and foodservice enquiries",
-    contact: {
-      name: "Travis Carruthers",
-      email: "travis@nextbite.com.au",
-      phones: ["0430 952 494"],
-    },
-  },
-  {
-    title: "International Distribution & Partnership",
-    subtitle: "Export, licensing and partnership opportunities",
-    contact: {
-      name: "Atif Sharjeel",
-      email: "atif@nextbite.com.au",
-      phones: ["+61 481 317 161", "+65 8133 1443"],
-    },
-  },
-];
+}[] = [];
+
+/* show ki aam raabta email — jahan koi shakhs na ho wahan yahi chalti hai */
+export const SHOW_EMAIL = "info@nextbite.com.au";
 
 export const ALL_SITES = [
   "angelfood.co.nz",

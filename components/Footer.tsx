@@ -15,7 +15,7 @@ const legalLinks = [
 const socials = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/nextbitebrands/",
     svg: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -72,6 +72,9 @@ export function Footer() {
               key={social.label}
               href={social.href}
               aria-label={social.label}
+              {...(social.href.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               whileHover={{ y: -5, scale: 1.1 }}
               className="glass flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:text-primary"
             >

@@ -202,6 +202,7 @@ export function BrandSection({
             }}
           >
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              {brand.contacts.length > 0 ? (
               <div>
                 <p
                   className="text-[11px] font-bold tracking-[0.2em] uppercase"
@@ -240,6 +241,26 @@ export function BrandSection({
                   ))}
                 </div>
               </div>
+              ) : (
+                /* koi raabta na ho to jagah khali na rahe — brand ki jhalak */
+                <div>
+                  <p
+                    className="text-[11px] font-bold tracking-[0.2em] uppercase"
+                    style={{ color: brand.color }}
+                  >
+                    {brand.kicker}
+                  </p>
+                  <p className="font-heading mt-3 text-xl font-bold tracking-tight">
+                    {brandProductCount(brand)} products across{" "}
+                    {brand.categories.length} ranges
+                  </p>
+                  <p className="mt-1.5 text-sm text-muted">
+                    {brand.since === "—"
+                      ? `Made in ${brand.origin}`
+                      : `Made in ${brand.origin} · Since ${brand.since}`}
+                  </p>
+                </div>
+              )}
 
               <div className="shrink-0 lg:text-right">
                 <div className="flex flex-wrap gap-2 lg:justify-end">

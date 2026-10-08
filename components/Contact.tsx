@@ -6,11 +6,25 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { RevealWords, Reveal } from "./Reveal";
 import { submitLead } from "@/lib/formService";
 
+/* Facebook ka icon lucide mein nahi hai — footer wala hi SVG,
+   taake dono jagah ek jaisa lage. */
+function FacebookIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" width={size} height={size} aria-hidden>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
 const info = [
   { icon: Mail,    label: "info@nextbite.com.au",   href: "mailto:info@nextbite.com.au" },
   { icon: Phone,   label: "+61 473 236 105 (Dion Campbell)", href: "tel:+61473236105" },
-  { icon: Phone,   label: "+61 481 317 161 (Atif Sharjeel)", href: "tel:+61481317161" },
   { icon: MapPin,  label: "Australia and New Zealand", href: undefined },
+  {
+    icon: FacebookIcon,
+    label: "facebook.com/nextbitebrands",
+    href: "https://www.facebook.com/nextbitebrands/",
+  },
 ];
 
 const inputClass =
@@ -106,6 +120,9 @@ export function Contact() {
                     <motion.a
                       href={item.href}
                       whileHover={item.href ? { x: 8 } : undefined}
+                      {...(item.href?.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="flex items-center gap-4"
                     >
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15 backdrop-blur-sm">

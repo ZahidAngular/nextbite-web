@@ -176,7 +176,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         message:
-          "Sorry — we couldn't record your enquiry. Please email travis@nextbite.com.au and we'll pick it up straight away.",
+          "Sorry — we couldn't record your enquiry. Please email info@nextbite.com.au and we'll pick it up straight away.",
       },
       { status: 500 }
     );

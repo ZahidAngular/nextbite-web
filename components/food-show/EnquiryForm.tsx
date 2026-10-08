@@ -181,7 +181,7 @@ export function EnquiryForm({
         if (data?.errors) setErrors(data.errors as FieldErrors);
         setFormError(
           data?.message ??
-            "We couldn't save your details. Please try again, or email travis@nextbite.com.au."
+            "We couldn't save your details. Please try again, or email info@nextbite.com.au."
         );
         return;
       }
@@ -190,7 +190,7 @@ export function EnquiryForm({
       setStep(2);
     } catch {
       setFormError(
-        "We couldn't reach the server. Please check your connection, or email travis@nextbite.com.au."
+        "We couldn't reach the server. Please check your connection, or email info@nextbite.com.au."
       );
     } finally {
       setSending(false);
@@ -274,7 +274,7 @@ export function EnquiryForm({
         if (data?.errors) setErrors(data.errors as FieldErrors);
         setFormError(
           data?.message ??
-            "We couldn't submit that. Please try again, or email travis@nextbite.com.au."
+            "We couldn't submit that. Please try again, or email info@nextbite.com.au."
         );
         /* agar galti step 1 mein hai to wahin wapas le jao */
         if (data?.errors && STEP_ONE_FIELDS.some((k) => data.errors[k])) {
@@ -286,7 +286,7 @@ export function EnquiryForm({
       setSent(true);
     } catch {
       setFormError(
-        "We couldn't reach the server. Please check your connection, or email travis@nextbite.com.au."
+        "We couldn't reach the server. Please check your connection, or email info@nextbite.com.au."
       );
     } finally {
       setSending(false);
@@ -425,7 +425,7 @@ export function EnquiryForm({
                 autoComplete="tel"
                 enterKeyHint="done"
                 className={inputClass}
-                placeholder="0430 952 494"
+                placeholder="04XX XXX XXX"
                 value={fields.phone}
                 aria-invalid={Boolean(errors.phone)}
                 aria-describedby={errors.phone ? "phone-error" : undefined}
